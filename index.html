@@ -1,0 +1,1777 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<!--
+  ═══════════════════════════════════════════════
+  FAMILY HQ — iPad Setup Instructions
+  ═══════════════════════════════════════════════
+  
+  TO OPEN ON iPAD:
+  Option 1 — AirDrop (easiest):
+    1. On your Mac/PC, right-click FamilyHQ.html → Share → AirDrop
+    2. Select your iPad
+    3. On iPad, tap Accept → Open in Safari
+  
+  Option 2 — Email to yourself:
+    1. Email FamilyHQ.html as an attachment to yourself
+    2. On iPad, open the email → tap the attachment → tap Share → Open in Safari
+  
+  Option 3 — iCloud Drive:
+    1. Save FamilyHQ.html to iCloud Drive on your Mac
+    2. On iPad, open Files app → iCloud Drive → tap the file → Open in Safari
+  
+  TO ADD TO HOME SCREEN (full-screen app, no browser bar):
+    1. Open the file in Safari on iPad
+    2. Tap the Share button (box with arrow) in Safari toolbar
+    3. Scroll down and tap "Add to Home Screen"
+    4. Name it "Family HQ" → tap Add
+    5. It now opens full-screen like an app!
+  
+  TIP: Lock iPad to landscape mode (Control Centre → rotation lock)
+  ═══════════════════════════════════════════════
+-->
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka+One&family=Nunito:wght@400;700;800;900&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;-webkit-user-select:none;user-select:none}
+html,body{width:100%;height:100%;overflow:hidden;font-family:'Nunito',sans-serif;transition:background 2s}
+html{height:-webkit-fill-available}
+body{min-height:-webkit-fill-available}
+.bg-studs{}
+body.theme-day{--bg:#f5eeff;--bg2:rgba(255,255,255,0.38);--cb:rgba(255,255,255,0.88);--text:#3a1566;--sub:rgba(100,70,140,0.55);--ti:rgba(255,255,255,0.28);--ck:rgba(255,255,255,0.62);--chb:rgba(255,255,255,0.6);--chbr:rgba(255,255,255,0.5);--coinbg:rgba(255,215,0,0.18);--coinbr:rgba(255,215,0,0.5);--coint:#b87800;--rb:rgba(255,255,255,0.48);--ob:rgba(240,234,255,0.97);--bar:rgba(255,255,255,0.72);background-color:var(--bg)}
+body.theme-afternoon{--bg:#e8faf2;--bg2:rgba(200,245,225,0.42);--cb:rgba(255,255,255,0.85);--text:#1a3a2a;--sub:rgba(40,120,80,0.55);--ti:rgba(200,240,220,0.38);--ck:rgba(255,255,255,0.62);--chb:rgba(255,255,255,0.65);--chbr:rgba(200,240,220,0.6);--coinbg:rgba(255,255,255,0.85);--coinbr:rgba(200,160,0,0.6);--coint:#7a5000;--rb:rgba(220,250,235,0.55);--ob:rgba(220,248,235,0.97);--bar:rgba(220,250,235,0.82);background-color:var(--bg)}
+body.theme-evening{--bg:#2d1040;--bg2:rgba(80,30,100,0.52);--cb:rgba(200,150,255,0.22);--text:#f0d8ff;--sub:rgba(220,180,255,0.6);--ti:rgba(100,50,140,0.38);--ck:rgba(60,20,90,0.7);--chb:rgba(80,30,110,0.5);--chbr:rgba(56,182,200,0.2);--coinbg:rgba(255,200,0,0.12);--coinbr:rgba(255,215,0,0.4);--coint:#ffd700;--rb:rgba(80,30,110,0.5);--ob:rgba(30,10,50,0.97);--bar:rgba(60,20,90,0.78);background-color:var(--bg)}
+body.theme-night{--bg:#07111f;--bg2:rgba(8,28,52,0.72);--cb:rgba(56,180,200,0.25);--text:#c8eef8;--sub:rgba(100,200,220,0.65);--ti:rgba(20,60,90,0.55);--ck:rgba(8,30,55,0.88);--chb:rgba(12,40,68,0.75);--chbr:rgba(56,180,200,0.22);--coinbg:rgba(255,200,60,0.12);--coinbr:rgba(255,215,80,0.38);--coint:#ffd97a;--rb:rgba(10,35,62,0.65);--ob:rgba(5,14,28,0.97);--bar:rgba(8,25,48,0.88);background-color:var(--bg)}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:0;transition:opacity 2s;opacity:0}
+body.theme-evening::before{opacity:1;background:radial-gradient(ellipse at 20% 15%,rgba(200,80,255,0.18),transparent 55%),radial-gradient(ellipse at 80% 20%,rgba(100,60,255,0.18),transparent 55%)}
+body.theme-night::before{opacity:1;background:radial-gradient(ellipse at 10% 25%,rgba(0,180,200,0.18),transparent 55%),radial-gradient(ellipse at 88% 12%,rgba(20,100,180,0.22),transparent 50%),radial-gradient(ellipse at 50% 80%,rgba(0,140,160,0.12),transparent 50%)}
+.shell{position:relative;width:100%;height:100vh;height:100dvh;display:flex;flex-direction:column;z-index:1;padding:4px;gap:4px;box-sizing:border-box}
+.tab-bar{display:flex;align-items:flex-end;gap:3px;flex-shrink:0}
+.day-tab{flex:1;border-radius:10px 10px 0 0;padding:4px 2px 7px;text-align:center;font-family:'Fredoka One',sans-serif;font-size:11px;border:2px solid rgba(255,255,255,0.2);border-bottom:none;color:var(--sub);cursor:pointer;background:var(--ti);transition:all 0.25s}
+.day-tab.active{transform:translateY(-5px);color:var(--text);border-color:rgba(255,255,255,0.5)}
+.day-tab .ds{font-size:8px;display:block;font-family:'Nunito',sans-serif;font-weight:800;opacity:0.75}
+.day-tab .dn{font-size:14px;display:block;line-height:1.1}
+.day-tab.active .dn{font-size:17px}
+.top-banner{flex-shrink:0;background:var(--bar);border-radius:12px;border:2px solid var(--cb);padding:5px 12px;display:flex;align-items:center;gap:8px;min-height:42px;transition:background 2s,border-color 2s;position:relative;overflow:visible}
+.tb-label{font-size:9px;font-weight:900;color:var(--sub);letter-spacing:0.5px;text-transform:uppercase;white-space:nowrap}
+.tb-content{display:flex;align-items:center;gap:8px;flex:1;justify-content:center}
+.rule-emoji-d{font-size:20px;line-height:1;animation:rIn 0.35s ease}
+@keyframes rIn{from{opacity:0;transform:translateY(3px)}to{opacity:1;transform:none}}
+.rule-text-d{font-family:'Fredoka One',sans-serif;font-size:14px;color:var(--text);animation:rIn 0.35s ease}
+.rule-dots-d{display:flex;gap:4px;align-items:center}
+.rdot{width:6px;height:6px;border-radius:50%;background:rgba(56,182,200,0.28);transition:background 0.2s}
+.rdot.active{background:#38b6c8}
+.bnav{background:rgba(56,182,200,0.2);border:none;border-radius:6px;color:var(--text);font-size:12px;cursor:pointer;padding:1px 7px;font-weight:900;flex-shrink:0}
+.bnav:hover{background:rgba(56,182,200,0.4)}
+.bedit{background:rgba(56,182,200,0.18);border:1.5px solid rgba(56,182,200,0.35);border-radius:7px;font-size:9px;font-weight:900;color:var(--sub);cursor:pointer;padding:3px 7px;font-family:'Nunito',sans-serif;flex-shrink:0}
+.sp-badge{display:none;font-family:'Fredoka One',sans-serif;font-size:12px;color:#fff;padding:2px 8px;border-radius:7px;flex-shrink:0}
+.grid-area{flex:1;position:relative;min-height:0;overflow:hidden}
+.panel{position:absolute;border-radius:16px;border:2px solid var(--cb);overflow:hidden;transition:border-color 2s,background 2s;display:flex;flex-direction:column}
+.panel-inner{flex:1;overflow:hidden;padding:10px;display:flex;flex-direction:column;min-height:0}
+.rhandle-e{position:absolute;right:0;top:10px;bottom:10px;width:10px;cursor:ew-resize;z-index:10;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.rhandle-e::after{content:'';width:3px;height:28px;border-radius:2px;background:rgba(56,182,200,0.7)}
+.rhandle-s{position:absolute;bottom:0;left:10px;right:10px;height:10px;cursor:ns-resize;z-index:10;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.rhandle-s::after{content:'';height:3px;width:28px;border-radius:2px;background:rgba(56,182,200,0.7)}
+.rhandle-se{position:absolute;right:0;bottom:0;width:16px;height:16px;cursor:nwse-resize;z-index:11;opacity:0;transition:opacity 0.2s}
+.rhandle-se::after{content:'';position:absolute;right:3px;bottom:3px;width:8px;height:8px;border-right:2.5px solid rgba(56,182,200,0.8);border-bottom:2.5px solid rgba(56,182,200,0.8);border-radius:1px}
+.rhandle-w{position:absolute;left:0;top:10px;bottom:10px;width:10px;cursor:ew-resize;z-index:10;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.rhandle-w::after{content:'';width:3px;height:28px;border-radius:2px;background:rgba(56,182,200,0.7)}
+.rhandle-n{position:absolute;top:0;left:10px;right:10px;height:10px;cursor:ns-resize;z-index:10;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.rhandle-n::after{content:'';height:3px;width:28px;border-radius:2px;background:rgba(56,182,200,0.7)}
+.rhandle-nw{position:absolute;left:0;top:0;width:16px;height:16px;cursor:nwse-resize;z-index:11;opacity:0;transition:opacity 0.2s}
+.rhandle-nw::after{content:'';position:absolute;left:3px;top:3px;width:8px;height:8px;border-left:2.5px solid rgba(56,182,200,0.8);border-top:2.5px solid rgba(56,182,200,0.8);border-radius:1px}
+.panel:hover .rhandle-e,.panel:hover .rhandle-s,.panel:hover .rhandle-se,.panel:hover .rhandle-w,.panel:hover .rhandle-n,.panel:hover .rhandle-nw{opacity:1}
+
+.arrange-mode .panel{outline:2px dashed rgba(56,182,200,0.5)!important}
+.cm-btn{border:none;border-radius:8px;padding:7px 12px;font-family:'Fredoka One',sans-serif;font-size:14px;cursor:pointer;color:#fff;font-weight:800}
+.cm-btn:hover{filter:brightness(1.15)}
+.panel-toggle-row{display:flex;align-items:center;justify-content:space-between;background:rgba(56,182,200,0.1);border-radius:10px;padding:10px 14px;margin-bottom:8px;border:1.5px solid rgba(56,182,200,0.2)}
+.panel-toggle-label{font-family:'Fredoka One',sans-serif;font-size:14px;color:var(--text)}
+.panel-toggle-sub{font-size:10px;font-weight:700;color:var(--sub);margin-top:2px}
+.toggle-switch{position:relative;width:44px;height:24px;flex-shrink:0}
+.toggle-switch input{opacity:0;width:0;height:0;position:absolute}
+.toggle-slider{position:absolute;inset:0;background:rgba(56,182,200,0.25);border-radius:24px;cursor:pointer;transition:background 0.2s}
+.toggle-slider::before{content:'';position:absolute;width:18px;height:18px;left:3px;top:3px;background:#fff;border-radius:50%;transition:transform 0.2s}
+.toggle-switch input:checked+.toggle-slider{background:#38b6c8}
+.toggle-switch input:checked+.toggle-slider::before{transform:translateX(20px)}
+.today-panel{background:var(--bar);backdrop-filter:blur(8px)}
+.strip-panel{background:var(--bar);display:flex;align-items:center;justify-content:center}
+.lexie-card{background:linear-gradient(140deg,#ffe0ef,#f8d0e8)}.mel-card{background:linear-gradient(140deg,#fff0d0,#ffe0a0)}.ben-card{background:linear-gradient(140deg,#d8f4ff,#b8e8ff)}.nate-card{background:linear-gradient(140deg,#d0f7e0,#b8f0d0)}
+body.theme-evening .lexie-card{background:linear-gradient(140deg,#5a1830,#3d0f22)}body.theme-evening .mel-card{background:linear-gradient(140deg,#3d1f00,#251200)}body.theme-evening .ben-card{background:linear-gradient(140deg,#0d2a40,#081828)}body.theme-evening .nate-card{background:linear-gradient(140deg,#0d3020,#081e12)}
+body.theme-night .lexie-card{background:linear-gradient(140deg,#2a0a28,#180818)}body.theme-night .mel-card{background:linear-gradient(140deg,#2a1500,#1a0e00)}body.theme-night .ben-card{background:linear-gradient(140deg,#001e3c,#001228)}body.theme-night .nate-card{background:linear-gradient(140deg,#002818,#001a10)}
+.kid-header{display:flex;align-items:center;justify-content:space-between;margin-bottom:3px}
+.kid-name{font-family:'Fredoka One',sans-serif;font-size:16px;line-height:1;transition:color 2s}
+.lexie-card .kid-name{color:#7a1a40}.mel-card .kid-name{color:#6b3800}.ben-card .kid-name{color:#003d5e}.nate-card .kid-name{color:#0a3d1e}
+body.theme-evening .lexie-card .kid-name{color:#ffaad4}body.theme-night .lexie-card .kid-name{color:#ff8fcc}
+body.theme-evening .mel-card .kid-name{color:#ffcc80}body.theme-night .mel-card .kid-name{color:#ffb347}
+body.theme-evening .ben-card .kid-name{color:#80d4ff}body.theme-night .ben-card .kid-name{color:#60c8ff}
+body.theme-evening .nate-card .kid-name{color:#80ffb4}body.theme-night .nate-card .kid-name{color:#40e0a0}
+.movie-badge{font-size:10px;font-weight:900;background:rgba(255,255,255,0.22);border:1.5px solid rgba(255,255,255,0.38);border-radius:7px;padding:2px 6px;cursor:pointer;transition:all 0.2s;white-space:nowrap}
+.movie-badge.picked{background:#3dba6a;border-color:#2a9a52;color:#fff}
+.seg-lbl{font-size:9px;font-weight:900;opacity:0.5;margin-bottom:3px;letter-spacing:0.5px}
+.lexie-card .seg-lbl{color:#7a1a40}.mel-card .seg-lbl{color:#6b3800}.ben-card .seg-lbl{color:#003d5e}.nate-card .seg-lbl{color:#0a3d1e}
+body.theme-evening .lexie-card .seg-lbl{color:#ffaad4}body.theme-night .lexie-card .seg-lbl{color:#ff8fcc}
+body.theme-evening .mel-card .seg-lbl{color:#ffcc80}body.theme-night .mel-card .seg-lbl{color:#ffb347}
+body.theme-evening .ben-card .seg-lbl{color:#80d4ff}body.theme-night .ben-card .seg-lbl{color:#60c8ff}
+body.theme-evening .nate-card .seg-lbl{color:#80ffb4}body.theme-night .nate-card .seg-lbl{color:#40e0a0}
+.chore-list{list-style:none;flex:1;overflow:hidden}
+.chore-item{display:flex;align-items:center;gap:4px;background:var(--chb);border-radius:7px;padding:4px 7px;margin-bottom:3px;cursor:pointer;font-size:13px;font-weight:800;border:1.5px solid var(--chbr)}
+.chore-item:hover{filter:brightness(1.12)}
+.chore-text{flex:1;color:var(--text)}
+.chore-check{width:16px;height:16px;border-radius:4px;border:2px solid rgba(255,255,255,0.3);display:flex;align-items:center;justify-content:center;flex-shrink:0;font-size:10px;margin-left:auto;background:rgba(255,255,255,0.08)}
+.chore-item.done .chore-check{background:#3dba6a;border-color:#2a9a52;color:#fff}
+.chore-item.done .chore-text{text-decoration:line-through;opacity:0.4}
+.coins-row{display:flex;align-items:center;gap:4px;background:var(--coinbg);border:1.5px solid var(--coinbr);border-radius:9px;padding:4px 7px;margin-top:4px;cursor:pointer;flex-shrink:0}
+.coin-ct{font-family:'Fredoka One',sans-serif;font-size:15px;color:var(--coint)}
+.coin-lbl{font-size:9px;font-weight:800;color:var(--coint);opacity:0.75}
+.plus-btn{margin-left:auto;background:#ffd700;border:2px solid #c8900a;border-radius:5px;width:18px;height:18px;font-size:12px;font-weight:900;color:#3a2000;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.ready-bar-wrap{margin-top:4px;background:var(--rb);border-radius:8px;padding:5px 7px;border:1.5px solid rgba(255,255,255,0.1);flex-shrink:0}
+.ready-bar-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.ready-bar-label{font-size:9px;font-weight:900;color:var(--text);opacity:0.75}
+.ready-bar-countdown{font-family:'Fredoka One',sans-serif;font-size:11px}
+.ready-bar-track{width:100%;height:10px;border-radius:8px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.1);overflow:hidden}
+.ready-bar-fill{height:100%;border-radius:8px;transition:width 1s linear}
+.ready-bar-urgent{animation:pulse 0.8s ease infinite alternate}
+@keyframes pulse{from{opacity:1}to{opacity:0.55}}
+.clock-inner{display:flex;flex-direction:column;align-items:center;padding:6px 8px;flex:1;min-height:0;overflow:hidden}
+.clock-card{background:var(--ck);border-radius:14px;padding:6px 8px;display:flex;flex-direction:column;align-items:center;flex-shrink:0;width:100%}
+.app-title{font-family:'Fredoka One',sans-serif;font-size:18px;background:linear-gradient(90deg,#ff8fbe,#ffb84d,#ffe066,#5ddb8a,#5bc8ff,#38b6c8,#ff8fbe);background-size:200% auto;-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;animation:shimmer 5s linear infinite;text-align:center}
+@keyframes shimmer{to{background-position:200% center}}
+.date-line{font-size:10px;font-weight:800;color:var(--sub);text-align:center;margin-bottom:2px}
+.clock-time-row{display:flex;align-items:baseline;justify-content:center;gap:5px;margin-bottom:3px}
+.clock-time-big{font-family:'Fredoka One',sans-serif;font-size:26px;color:var(--text);letter-spacing:1px;transition:color 2s}
+.clock-ampm{font-family:'Fredoka One',sans-serif;font-size:15px;color:var(--sub);transition:color 2s}
+.cd-wrap{width:100%;background:rgba(255,255,255,0.1);border-radius:10px;padding:5px 8px;margin-top:3px;border:1.5px solid var(--cb)}
+.cd-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:3px}
+.cd-name{font-family:'Fredoka One',sans-serif;font-size:12px}
+.cd-time{font-family:'Fredoka One',sans-serif;font-size:13px}
+.cd-track{width:100%;height:15px;background:rgba(255,255,255,0.08);border-radius:12px;position:relative;border:1.5px solid rgba(255,255,255,0.1);overflow:visible}
+.cd-fill{height:100%;border-radius:12px;transition:width 0.9s ease;position:relative;min-width:18px}
+.cd-arrow{position:absolute;right:-3px;top:50%;transform:translateY(-50%);width:0;height:0;border-top:7px solid transparent;border-bottom:7px solid transparent;border-left:11px solid white;filter:drop-shadow(0 1px 2px rgba(0,0,0,0.3))}
+.cd-tasks{font-size:9px;font-weight:700;color:var(--sub);margin-top:2px}
+.test-bar{display:flex;gap:3px;margin-top:4px;flex-wrap:wrap;justify-content:center}
+.test-btn{background:rgba(255,255,255,0.1);border:1.5px solid rgba(56,182,200,0.4);border-radius:6px;padding:2px 6px;font-size:9px;font-weight:900;color:var(--text);cursor:pointer;font-family:'Nunito',sans-serif}
+.test-btn:hover{filter:brightness(1.2)}
+.test-btn.active-test{background:#38b6c8;color:#fff}
+.bottom-banner{flex-shrink:0;background:var(--bar);border-radius:12px;border:2px solid var(--cb);padding:5px 12px;display:flex;align-items:center;gap:7px;min-height:46px;transition:background 2s,border-color 2s}
+.bb-label{font-family:'Fredoka One',sans-serif;font-size:13px;color:var(--text);opacity:0.85;white-space:nowrap;flex-shrink:0}
+.ev-chips-row{display:flex;gap:5px;flex:1;overflow:hidden;align-items:center}
+.ev-chip{display:flex;align-items:center;gap:8px;background:rgba(255,255,255,0.12);border-radius:18px;padding:7px 14px;border:1.5px solid rgba(255,255,255,0.15);flex-shrink:0}
+.ev-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.ev-n{font-family:'Fredoka One',sans-serif;font-size:15px;color:var(--text)}
+.ev-t{font-size:13px;font-weight:800;color:var(--sub);white-space:nowrap}
+.no-ev{font-size:12px;font-weight:700;color:var(--sub)}
+.ref-btn{background:rgba(56,182,200,0.2);border:1.5px solid rgba(56,182,200,0.4);border-radius:7px;padding:2px 8px;font-size:10px;font-weight:900;color:var(--text);cursor:pointer;flex-shrink:0;font-family:'Nunito',sans-serif}
+.ref-icon{display:inline-block}
+.ref-btn.spinning .ref-icon{animation:spin 0.5s linear 1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.strip-msg{font-family:'Fredoka One',sans-serif;font-size:11px;background:linear-gradient(90deg,#ff8fbe,#ffb84d,#ffe066,#5ddb8a,#5bc8ff,#38b6c8);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;margin-left:auto;flex-shrink:0}
+.banner-action-btn{border:1.5px solid;border-radius:8px;padding:4px 10px;font-size:10px;font-weight:900;color:var(--text);cursor:pointer;white-space:nowrap;flex-shrink:0;font-family:'Nunito',sans-serif;transition:filter 0.15s}
+.banner-action-btn:hover{filter:brightness(1.2)}
+#parentFab{background:rgba(56,182,200,0.18);border-color:rgba(56,182,200,0.45)}
+#arrangeFab{background:rgba(255,200,0,0.16);border-color:rgba(255,200,0,0.45)}
+#arrangeFab.arranging{background:rgba(80,200,120,0.22);border-color:rgba(80,200,120,0.55)}
+.overlay{display:none;position:fixed;inset:0;background:var(--ob);z-index:100;flex-direction:column;align-items:center;padding:14px;overflow-y:auto}
+.overlay.open{display:flex}
+.close-btn{align-self:flex-end;background:rgba(56,182,200,0.2);border:2px solid rgba(56,182,200,0.4);border-radius:9px;padding:4px 12px;font-size:12px;font-weight:800;color:var(--text);cursor:pointer;margin-bottom:8px}
+.pin-wrap{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:12px}
+.pin-title{font-family:'Fredoka One',sans-serif;font-size:24px;color:#38b6c8}
+.pin-sub{font-size:12px;font-weight:800;color:var(--sub)}
+.pin-dots{display:flex;gap:12px}
+.pin-dot{width:16px;height:16px;border-radius:50%;border:2.5px solid rgba(56,182,200,0.5);background:transparent;transition:all 0.15s}
+.pin-dot.filled{background:#38b6c8;border-color:#38b6c8}
+.pin-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;max-width:210px;width:100%}
+.pin-key{background:rgba(56,182,200,0.15);border:2px solid rgba(56,182,200,0.3);border-radius:11px;padding:11px;font-family:'Fredoka One',sans-serif;font-size:22px;color:var(--text);cursor:pointer;text-align:center}
+.pin-key:hover{background:rgba(56,182,200,0.3)}
+.pin-err{color:#ff8888;font-size:12px;font-weight:800;min-height:16px}
+.parent-tabs{display:flex;gap:5px;margin-bottom:12px;width:100%;flex-wrap:wrap}
+.ptab{flex:1;min-width:60px;background:rgba(56,182,200,0.12);border:2px solid rgba(56,182,200,0.3);border-radius:10px;padding:5px 3px;text-align:center;font-family:'Fredoka One',sans-serif;font-size:11px;color:var(--text);cursor:pointer}
+.ptab.active{background:#38b6c8;color:#fff;border-color:#38b6c8}
+.section-title{font-family:'Fredoka One',sans-serif;font-size:15px;color:#38b6c8;margin-bottom:8px}
+.rule-edit-row{display:flex;align-items:center;gap:6px;background:rgba(56,182,200,0.1);border-radius:10px;padding:7px 10px;margin-bottom:6px;border:1.5px solid rgba(56,182,200,0.2)}
+.rule-emoji-input{width:44px;background:rgba(255,255,255,0.15);border:1.5px solid rgba(56,182,200,0.3);border-radius:7px;padding:4px 6px;font-size:16px;text-align:center;color:var(--text)}
+.rule-text-input{flex:1;background:rgba(255,255,255,0.1);border:1.5px solid rgba(56,182,200,0.3);border-radius:8px;padding:5px 8px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--text)}
+.rule-del-btn{background:rgba(255,80,80,0.18);border:none;border-radius:6px;color:#ff8888;width:24px;height:24px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.chore-editor-kid{background:rgba(56,182,200,0.1);border-radius:14px;padding:11px;margin-bottom:10px;border:1.5px solid rgba(56,182,200,0.2)}
+.chore-editor-kid-name{font-family:'Fredoka One',sans-serif;font-size:16px;margin-bottom:8px;color:var(--text)}
+.seg-accordion{margin-bottom:6px;border-radius:10px;overflow:hidden;border:1.5px solid rgba(56,182,200,0.2)}
+.seg-accordion-header{display:flex;justify-content:space-between;align-items:center;padding:7px 10px;cursor:pointer;font-family:'Fredoka One',sans-serif;font-size:13px;color:#3a1566;background:rgba(255,255,255,0.75);user-select:none}
+.seg-accordion-header:hover{background:rgba(255,255,255,0.9)}
+.seg-accordion-header .chevron{transition:transform 0.2s;font-size:11px;opacity:0.6}
+.seg-accordion-header.open .chevron{transform:rotate(180deg)}
+.seg-accordion-body{display:none;padding:8px 10px;background:rgba(255,255,255,0.45)}
+.seg-accordion-body.open{display:block}
+.chore-edit-row{display:flex;align-items:center;gap:6px;margin-bottom:5px;background:rgba(255,255,255,0.6);border-radius:8px;padding:4px 6px;border:1.5px solid rgba(200,180,240,0.3)}
+.chore-edit-input{flex:1;background:transparent;border:none;outline:none;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:#3a1566;padding:2px 4px}
+.chore-edit-del{background:rgba(255,80,80,0.15);border:none;border-radius:6px;color:#c00;width:22px;height:22px;cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center;flex-shrink:0;font-weight:900}
+.add-chore-row{display:flex;gap:6px;margin-top:4px}
+.add-chore-input{flex:1;background:rgba(255,255,255,0.9);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:5px 8px;font-family:'Nunito',sans-serif;font-size:12px;color:#3a1566}
+.add-chore-btn{background:#38b6c8;border:none;border-radius:8px;padding:5px 12px;font-family:'Fredoka One',sans-serif;font-size:13px;color:#fff;cursor:pointer;white-space:nowrap}
+.kid-ready-row{background:rgba(56,182,200,0.1);border-radius:12px;padding:10px 12px;margin-bottom:8px;border:1.5px solid rgba(56,182,200,0.2)}
+.kid-ready-name{font-family:'Fredoka One',sans-serif;font-size:16px;margin-bottom:6px;color:var(--text)}
+.ready-time-row{display:flex;align-items:center;gap:8px;margin-bottom:4px}
+.ready-time-row label{font-size:11px;font-weight:800;color:var(--sub);min-width:80px}
+.ready-time-row input[type=time]{flex:1;background:rgba(56,182,200,0.1);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:4px 8px;font-family:'Nunito',sans-serif;font-size:13px;color:var(--text)}
+.ready-time-row input[type=checkbox]{width:18px;height:18px;cursor:pointer;accent-color:#38b6c8}
+.cal-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:9px}
+.cal-h-title{font-family:'Fredoka One',sans-serif;font-size:17px;color:#38b6c8}
+.cal-nav{background:rgba(56,182,200,0.2);border:2px solid rgba(56,182,200,0.4);border-radius:8px;color:#38b6c8;padding:2px 9px;cursor:pointer;font-family:'Fredoka One',sans-serif;font-size:15px}
+.cal-wdays{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:3px}
+.cal-wdn{text-align:center;font-size:10px;font-weight:800;color:var(--sub);padding:2px 0}
+.cal-days{display:grid;grid-template-columns:repeat(7,1fr);gap:2px}
+.cal-d{aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-radius:7px;cursor:pointer;font-size:11px;font-weight:800;color:var(--text);transition:all 0.15s;position:relative;flex-direction:column}
+.cal-d:hover{background:rgba(56,182,200,0.2)}
+.cal-d.today{background:rgba(56,182,200,0.28);border:2px solid #38b6c8}
+.cal-d.other{opacity:0.4}
+.cal-d.sel{background:#38b6c8;color:#fff}
+.cal-d.has-ev::after{content:'';position:absolute;bottom:2px;width:5px;height:5px;border-radius:50%;background:#ff8fbe}
+.cal-d.special-day .sp-stripe{position:absolute;bottom:0;left:0;right:0;height:4px;border-radius:0 0 5px 5px}
+.ev-list-sec{margin-top:9px}
+.ev-list-title{font-family:'Fredoka One',sans-serif;font-size:13px;color:#38b6c8;margin-bottom:5px}
+.ev-row{display:flex;align-items:center;gap:7px;background:rgba(56,182,200,0.1);border-radius:9px;padding:5px 9px;margin-bottom:3px;border:1.5px solid rgba(56,182,200,0.2)}
+.ev-row-dot{width:9px;height:9px;border-radius:50%;flex-shrink:0}
+.ev-row-name{flex:1;font-size:11px;font-weight:800;color:var(--text)}
+.ev-row-meta{font-size:10px;font-weight:700;color:var(--sub)}
+.ev-row-rec{font-size:9px;font-weight:800;background:rgba(56,182,200,0.2);color:#38b6c8;border-radius:5px;padding:1px 5px}
+.ev-del{background:rgba(255,80,80,0.15);border:2px solid rgba(255,80,80,0.4);border-radius:7px;color:#ff8888;padding:3px 9px;cursor:pointer;font-size:11px;font-weight:900;font-family:'Nunito',sans-serif;white-space:nowrap}
+.add-form{background:rgba(56,182,200,0.08);border-radius:14px;padding:12px;margin-top:9px;border:2px solid rgba(56,182,200,0.2)}
+.add-form-title{font-family:'Fredoka One',sans-serif;font-size:14px;color:#38b6c8;margin-bottom:8px}
+.form-row{margin-bottom:6px}
+.form-row label{display:block;font-size:10px;font-weight:900;color:var(--sub);margin-bottom:2px;text-transform:uppercase;letter-spacing:0.4px}
+.form-row input,.form-row select,.form-row textarea{width:100%;background:rgba(56,182,200,0.1);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:5px 9px;font-family:'Nunito',sans-serif;font-size:12px;color:var(--text)}
+.form-row textarea{resize:vertical;min-height:42px}
+.fbtn-row{display:flex;gap:6px;margin-top:8px}
+.btn-save{flex:1;background:rgba(56,182,200,0.35);border:2px solid #38b6c8;border-radius:10px;padding:8px;color:var(--text);font-family:'Fredoka One',sans-serif;font-size:14px;cursor:pointer}
+.btn-cx{flex:1;background:rgba(255,255,255,0.08);border:2px solid rgba(56,182,200,0.3);border-radius:10px;padding:8px;color:var(--text);font-family:'Fredoka One',sans-serif;font-size:14px;cursor:pointer}
+.special-ev-row{display:flex;align-items:flex-start;gap:8px;background:rgba(56,182,200,0.1);border-radius:10px;padding:8px 10px;margin-bottom:6px;border:1.5px solid rgba(56,182,200,0.2)}
+.special-ev-dot{width:14px;height:14px;border-radius:50%;flex-shrink:0;margin-top:2px}
+.special-ev-info{flex:1}
+.special-ev-name{font-size:13px;font-weight:800;color:var(--text);margin-bottom:2px}
+.special-ev-dates{font-size:11px;font-weight:700;color:var(--sub)}
+.special-ev-del{background:rgba(255,80,80,0.15);border:2px solid rgba(255,80,80,0.4);border-radius:6px;color:#ff8888;padding:3px 8px;cursor:pointer;font-size:11px;font-weight:900;font-family:'Nunito',sans-serif;flex-shrink:0}
+.type-btn{border:none;border-radius:50%;padding:0;cursor:pointer;transition:all 0.15s;opacity:0.6;width:28px;height:28px}
+.type-btn.sel{opacity:1;transform:scale(1.12);box-shadow:0 2px 8px rgba(0,0,0,0.25)}
+.type-row{display:flex;gap:5px;flex-wrap:wrap;margin-top:4px}
+.seg-ov{display:none;position:fixed;inset:0;background:rgba(20,5,50,0.88);z-index:200;align-items:center;justify-content:center}
+.seg-ov.open{display:flex}
+.seg-pop{border-radius:24px;padding:20px;max-width:300px;width:88%;border:3px solid rgba(255,255,255,0.25);text-align:center;position:relative;animation:pop 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+@keyframes pop{from{transform:scale(0.3) rotate(-8deg);opacity:0}to{transform:scale(1);opacity:1}}
+.sp-title{font-family:'Fredoka One',sans-serif;font-size:26px;margin-bottom:3px}
+.sp-time-el{font-size:12px;font-weight:800;opacity:0.7;margin-bottom:10px}
+.sp-tasks{text-align:left;background:rgba(255,255,255,0.08);border-radius:11px;padding:9px 12px;margin-bottom:10px}
+.sp-task{font-size:12px;font-weight:800;padding:2px 0;display:flex;align-items:center;gap:6px;color:rgba(255,255,255,0.9)}
+.sp-task::before{content:'⭐';font-size:13px}
+.sp-cd{font-family:'Fredoka One',sans-serif;font-size:40px}
+.close-pop{position:absolute;top:9px;right:9px;background:rgba(255,255,255,0.15);border:none;border-radius:8px;width:26px;height:26px;cursor:pointer;font-size:15px;color:rgba(255,255,255,0.8);display:flex;align-items:center;justify-content:center}
+.ann-ov{display:none;position:fixed;inset:0;z-index:500;align-items:center;justify-content:center}
+.ann-ov.open{display:flex}
+.ann-bg-el{position:absolute;inset:0}
+.ann-pop{position:relative;border-radius:28px;padding:24px 22px;max-width:320px;width:88%;border:4px solid rgba(255,255,255,0.35);text-align:center;animation:pop 0.45s cubic-bezier(0.34,1.56,0.64,1);background:rgba(0,0,0,0.25)}
+.ann-icon{font-size:70px;display:block;margin-bottom:8px;animation:wobble 1.3s ease infinite alternate;line-height:1}
+@keyframes wobble{from{transform:rotate(-6deg) scale(1)}to{transform:rotate(6deg) scale(1.12)}}
+.ann-title{font-family:'Fredoka One',sans-serif;font-size:34px;color:#fff;text-shadow:0 2px 8px rgba(0,0,0,0.3);margin-bottom:6px}
+.ann-sub{font-family:'Fredoka One',sans-serif;font-size:18px;color:rgba(255,255,255,0.92);margin-bottom:16px}
+.ann-dismiss{background:rgba(255,255,255,0.2);border:3px solid rgba(255,255,255,0.5);border-radius:16px;padding:10px 32px;font-family:'Fredoka One',sans-serif;font-size:20px;color:#fff;cursor:pointer}
+.cuckoo-ov{display:none;position:fixed;left:0;right:0;top:0;z-index:600;align-items:flex-start;justify-content:center;pointer-events:none}
+.cuckoo-ov.open{display:flex;pointer-events:all}
+.cuckoo-egg-wrap{background:linear-gradient(160deg,#fff8e0,#ffe8a0);border-radius:0 0 22px 22px;border:3px solid #e6c800;border-top:none;padding:5px 24px 12px;text-align:center;animation:slideDown 0.4s cubic-bezier(0.34,1.4,0.64,1);box-shadow:0 8px 28px rgba(200,160,0,0.25);min-width:180px}
+@keyframes slideDown{from{transform:translateY(-100%)}to{transform:translateY(0)}}
+.egg-bird{font-size:44px;display:block;animation:birdBounce 0.45s ease infinite alternate;margin:4px 0}
+@keyframes birdBounce{from{transform:translateY(-7px) rotate(-5deg)}to{transform:translateY(5px) rotate(5deg)}}
+.cuckoo-time-lbl{font-family:'Fredoka One',sans-serif;font-size:26px;color:#b87000;display:block;margin:2px 0}
+.cuckoo-cues{font-size:12px;font-weight:800;color:#9a6000;margin-bottom:8px}
+.cuckoo-ok{background:#ffd700;border:2.5px solid #c8900a;border-radius:9px;padding:5px 18px;font-family:'Fredoka One',sans-serif;font-size:15px;color:#5a3d00;cursor:pointer}
+.reward-ov{display:none;position:fixed;inset:0;background:rgba(10,5,30,0.92);z-index:300;align-items:center;justify-content:center}
+.reward-ov.open{display:flex}
+.reward-pop{background:rgba(30,15,60,0.98);border-radius:22px;padding:20px;max-width:260px;width:88%;border:3px solid rgba(56,182,200,0.4);text-align:center;animation:pop 0.3s cubic-bezier(0.34,1.56,0.64,1)}
+.rw-title{font-family:'Fredoka One',sans-serif;font-size:20px;color:#38b6c8;margin-bottom:5px}
+.rw-coins{font-family:'Fredoka One',sans-serif;font-size:52px;color:#ffd700;animation:bop 0.6s ease infinite alternate}
+@keyframes bop{from{transform:translateY(0)}to{transform:translateY(-7px)}}
+.rw-btns{display:flex;gap:5px;flex-wrap:wrap;margin-top:10px;justify-content:center}
+.rw-btn{border:none;border-radius:9px;padding:7px 10px;font-family:'Fredoka One',sans-serif;font-size:13px;cursor:pointer;color:#fff;min-width:60px;font-weight:800}
+.confirm-ov{display:none;position:fixed;inset:0;background:rgba(10,5,30,0.92);z-index:400;align-items:center;justify-content:center}
+.confirm-ov.open{display:flex}
+.confirm-pop{background:rgba(30,15,60,0.98);border-radius:20px;padding:22px;max-width:290px;width:88%;border:3px solid rgba(56,182,200,0.4);text-align:center;animation:pop 0.25s cubic-bezier(0.34,1.56,0.64,1)}
+.confirm-title{font-family:'Fredoka One',sans-serif;font-size:20px;color:#d0b8ff;margin-bottom:8px}
+.confirm-msg{font-size:12px;font-weight:700;color:rgba(200,180,255,0.75);margin-bottom:16px;line-height:1.5}
+.confirm-btns{display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.cbtn{border:none;border-radius:10px;padding:8px 14px;font-family:'Fredoka One',sans-serif;font-size:14px;cursor:pointer}
+.cbtn-cancel{background:rgba(56,182,200,0.2);border:2px solid rgba(56,182,200,0.4)!important;color:#d0b8ff}
+.cbtn-del{background:#ff5555;color:#fff}
+
+/* ── ALARM SYSTEM ── */
+.alarm-overlay{display:none;position:fixed;inset:0;z-index:700;align-items:center;justify-content:center;background:rgba(0,0,0,0.85)}
+.alarm-overlay.open{display:flex}
+.alarm-popup{border-radius:32px;padding:32px 28px;max-width:420px;width:92%;text-align:center;animation:alarmPop 0.45s cubic-bezier(0.34,1.56,0.64,1);background:#1a1a1a;border:3px solid rgba(255,255,255,0.15)}
+@keyframes alarmPop{from{transform:scale(0.3);opacity:0}to{transform:scale(1);opacity:1}}
+.alarm-kids-row{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;margin-bottom:18px}
+.alarm-kid-chip{font-family:'Fredoka One',sans-serif;font-size:20px;color:#fff;background:rgba(255,255,255,0.12);border-radius:12px;padding:6px 14px}
+.alarm-msg-text{font-family:'Fredoka One',sans-serif;font-size:22px;color:#fff;margin-bottom:24px;line-height:1.3}
+.tl-housing{background:#111;border-radius:20px;padding:14px 12px;display:inline-flex;flex-direction:column;gap:12px;margin-bottom:24px;border:3px solid #333}
+.tl{width:56px;height:56px;border-radius:50%;opacity:0.12;transition:opacity 0.2s,box-shadow 0.2s}
+.tl.red{background:#ff3b30}
+.tl.yellow{background:#ffcc00}
+.tl.green{background:#34c759}
+.tl.on.red{opacity:1;box-shadow:0 0 24px 6px rgba(255,59,48,0.7)}
+.tl.on.yellow{opacity:1;box-shadow:0 0 24px 6px rgba(255,204,0,0.7)}
+.tl.on.green{opacity:1;box-shadow:0 0 24px 6px rgba(52,199,89,0.7)}
+.alarm-stop-btn{background:#ff3b30;border:none;border-radius:18px;padding:14px 48px;font-family:'Fredoka One',sans-serif;font-size:24px;color:#fff;cursor:pointer;letter-spacing:1px;box-shadow:0 4px 20px rgba(255,59,48,0.5)}
+.alarm-stop-btn:hover{background:#ff5544}
+/* Alarm editor */
+.alarm-block{background:rgba(56,182,200,0.08);border-radius:14px;padding:12px 14px;margin-bottom:10px;border:1.5px solid rgba(56,182,200,0.18)}
+.alarm-block-title{font-family:'Fredoka One',sans-serif;font-size:14px;color:var(--text);margin-bottom:8px;opacity:0.7}
+.alarm-row{display:flex;align-items:center;gap:8px;margin-bottom:6px;background:rgba(56,182,200,0.07);border-radius:10px;padding:8px 10px;border:1.5px solid rgba(56,182,200,0.14)}
+.alarm-row-info{flex:1}
+.alarm-row-time{font-family:'Fredoka One',sans-serif;font-size:15px;color:var(--text)}
+.alarm-row-kids{font-size:11px;font-weight:700;color:var(--sub);margin-top:2px}
+.alarm-del{background:rgba(255,80,80,0.15);border:none;border-radius:6px;color:#ff6666;padding:3px 8px;cursor:pointer;font-size:12px;font-weight:900;font-family:'Nunito',sans-serif}
+.add-alarm-form{background:rgba(56,182,200,0.06);border-radius:12px;padding:12px;border:1.5px solid rgba(56,182,200,0.14);margin-top:4px}
+.add-alarm-form input[type=time]{background:rgba(56,182,200,0.1);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:6px 10px;font-family:'Nunito',sans-serif;font-size:14px;color:var(--text);width:100%;margin-bottom:8px}
+.add-alarm-form input[type=text]{background:rgba(56,182,200,0.1);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:6px 10px;font-family:'Nunito',sans-serif;font-size:13px;color:var(--text);width:100%;margin-bottom:8px}
+.kid-checkboxes{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:8px}
+.kid-cb-label{display:flex;align-items:center;gap:5px;background:rgba(56,182,200,0.1);border-radius:8px;padding:5px 10px;cursor:pointer;border:1.5px solid rgba(56,182,200,0.2);font-family:'Fredoka One',sans-serif;font-size:13px;color:var(--text)}
+.kid-cb-label input{accent-color:#38b6c8;width:15px;height:15px}
+
+/* ── READY COUNTDOWN PANEL (inside clock) ── */
+.ready-clock-wrap{width:100%;display:flex;flex-direction:column;gap:5px}
+.ready-clock-row{display:flex;align-items:center;gap:8px;border-radius:12px;padding:7px 10px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(56,182,200,0.2)}
+.ready-clock-emoji{font-size:18px;flex-shrink:0}
+.ready-clock-name{font-family:'Fredoka One',sans-serif;font-size:14px;color:var(--text);flex-shrink:0;min-width:52px}
+.ready-clock-bar-wrap{flex:1;display:flex;flex-direction:column;gap:3px}
+.ready-clock-track{width:100%;height:14px;border-radius:8px;background:rgba(255,255,255,0.08);border:1.5px solid rgba(255,255,255,0.1);overflow:hidden}
+.ready-clock-fill{height:100%;border-radius:8px;transition:width 1s linear}
+.ready-clock-time{font-family:'Fredoka One',sans-serif;font-size:16px;flex-shrink:0;min-width:68px;text-align:right}
+.ready-urgent{animation:pulse 0.7s ease infinite alternate}
+
+/* ── AWAY SIGN ── */
+.away-sign{display:flex;flex-direction:column;align-items:center;justify-content:center;flex:1;gap:8px;padding:10px 0}
+.away-door-hanger{background:linear-gradient(140deg,#ff9500,#ff6b00);border-radius:50% 50% 8px 8px / 30% 30% 8px 8px;padding:12px 16px 14px;text-align:center;box-shadow:0 4px 16px rgba(0,0,0,0.25);position:relative;border:3px solid rgba(255,255,255,0.35);min-width:110px}
+.away-door-hanger::before{content:'';position:absolute;top:-14px;left:50%;transform:translateX(-50%);width:20px;height:14px;border-radius:50% 50% 0 0;background:linear-gradient(140deg,#ff9500,#ff6b00);border:3px solid rgba(255,255,255,0.35);border-bottom:none}
+.away-hanger-hole{width:10px;height:10px;border-radius:50%;background:rgba(0,0,0,0.3);margin:0 auto 8px}
+.away-title{font-family:'Fredoka One',sans-serif;font-size:18px;color:#fff;line-height:1.2}
+.away-sub{font-size:11px;font-weight:800;color:rgba(255,255,255,0.85);margin-top:4px}
+.holiday-badge{display:inline-block;background:linear-gradient(135deg,#ff9500,#ff6b00);color:#fff;font-family:'Fredoka One',sans-serif;font-size:11px;border-radius:6px;padding:2px 7px;margin-left:5px}
+/* Special event type tabs */
+.sp-type-tabs{display:flex;gap:5px;margin-bottom:10px;flex-wrap:wrap}
+.sp-type-tab{flex:1;min-width:80px;background:rgba(56,182,200,0.1);border:1.5px solid rgba(56,182,200,0.25);border-radius:8px;padding:5px 4px;text-align:center;font-family:'Fredoka One',sans-serif;font-size:11px;color:var(--text);cursor:pointer;transition:all 0.15s}
+.sp-type-tab.active{background:#38b6c8;color:#fff;border-color:#38b6c8}
+
+/* ── READY SIREN POPUP ── */
+.siren-ov{display:none;position:fixed;inset:0;z-index:650;align-items:center;justify-content:center;background:rgba(0,0,0,0.82)}
+.siren-ov.open{display:flex}
+.siren-popup{background:linear-gradient(160deg,#1a0000,#2a0000);border-radius:28px;padding:28px 24px;max-width:400px;width:92%;text-align:center;border:3px solid rgba(255,60,60,0.4);animation:sirenPop 0.4s cubic-bezier(0.34,1.56,0.64,1);position:relative;overflow:hidden}
+@keyframes sirenPop{from{transform:scale(0.3);opacity:0}to{transform:scale(1);opacity:1}}
+.siren-popup::before{content:'';position:absolute;inset:0;border-radius:28px;animation:sirenFlash 0.6s ease infinite alternate;pointer-events:none}
+@keyframes sirenFlash{from{background:rgba(255,0,0,0.0)}to{background:rgba(255,0,0,0.08)}}
+.siren-icon{font-size:72px;display:block;animation:sirenSpin 0.5s linear infinite alternate;margin-bottom:10px;line-height:1}
+@keyframes sirenSpin{from{transform:rotate(-12deg) scale(1)}to{transform:rotate(12deg) scale(1.08)}}
+.siren-title{font-family:'Fredoka One',sans-serif;font-size:38px;color:#ff4444;text-shadow:0 0 20px rgba(255,60,60,0.8);margin-bottom:6px}
+.siren-kids{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-bottom:12px}
+.siren-kid-chip{font-family:'Fredoka One',sans-serif;font-size:20px;color:#fff;background:rgba(255,60,60,0.2);border:2px solid rgba(255,60,60,0.4);border-radius:12px;padding:5px 14px}
+.siren-tl-wrap{display:flex;justify-content:center;margin-bottom:16px}
+.siren-tl-box{background:#111;border-radius:16px;padding:10px 12px;display:inline-flex;flex-direction:column;gap:10px;border:3px solid #333}
+.siren-tl{width:48px;height:48px;border-radius:50%;opacity:0.12}
+.siren-tl.red{background:#ff3b30}
+.siren-tl.yellow{background:#ffcc00}
+.siren-tl.green{background:#34c759}
+.siren-tl.on.red{opacity:1;box-shadow:0 0 22px 6px rgba(255,59,48,0.8),0 0 44px rgba(255,59,48,0.4)}
+.siren-stop-btn{background:#ff3b30;border:none;border-radius:16px;padding:13px 44px;font-family:'Fredoka One',sans-serif;font-size:22px;color:#fff;cursor:pointer;box-shadow:0 4px 20px rgba(255,59,48,0.5);letter-spacing:1px}
+.siren-stop-btn:hover{background:#ff5544}
+/* Siren beacon */
+.siren-beacon-wrap{display:flex;justify-content:center;align-items:center;margin-bottom:16px;height:120px;position:relative}
+.siren-beacon{position:relative;width:90px;height:110px;display:flex;flex-direction:column;align-items:center;justify-content:flex-end}
+.siren-beacon-body{position:relative;z-index:2;display:flex;flex-direction:column;align-items:center}
+.siren-beacon-dome{width:60px;height:34px;background:radial-gradient(ellipse at 40% 35%,#ff6666,#cc0000);border-radius:50% 50% 0 0;border:3px solid #880000;position:relative;overflow:hidden;box-shadow:0 0 0 0 rgba(255,50,50,0.7)}
+.siren-beacon-dome.flashing{animation:domeFlash 0.5s ease infinite alternate}
+@keyframes domeFlash{
+  from{background:radial-gradient(ellipse at 40% 35%,#ff6666,#cc0000);box-shadow:0 0 10px 4px rgba(255,50,50,0.3)}
+  to{background:radial-gradient(ellipse at 40% 35%,#ffffff,#ff2200);box-shadow:0 0 40px 16px rgba(255,50,50,0.9),0 0 80px 30px rgba(255,50,50,0.4)}
+}
+.siren-beacon-dome::after{content:'';position:absolute;top:4px;left:10px;width:18px;height:10px;background:rgba(255,255,255,0.35);border-radius:50%;transform:rotate(-20deg)}
+.siren-beacon-base{width:70px;height:18px;background:linear-gradient(180deg,#555,#333);border-radius:0 0 8px 8px;border:2px solid #222}
+/* Rotating light beams */
+.siren-beam{position:absolute;top:10px;left:50%;width:120px;height:8px;background:linear-gradient(90deg,rgba(255,50,50,0.9),transparent);border-radius:4px;transform-origin:0% 50%;animation:beamRotate 0.6s linear infinite;z-index:1;opacity:0}
+.siren-beam2{animation:beamRotate 0.6s linear infinite;animation-delay:0.3s;background:linear-gradient(90deg,rgba(255,80,80,0.7),transparent)}
+@keyframes beamRotate{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+.siren-beam.active,.siren-beam2.active{opacity:1}
+
+/* ── VOLUME CONTROL ── */
+.vol-wrap{display:flex;align-items:center;gap:5px;flex-shrink:0}
+.vol-icon{font-size:14px;cursor:pointer;flex-shrink:0}
+.vol-slider{-webkit-appearance:none;appearance:none;width:70px;height:5px;border-radius:3px;background:rgba(56,182,200,0.3);outline:none;cursor:pointer}
+.vol-slider::-webkit-slider-thumb{-webkit-appearance:none;width:14px;height:14px;border-radius:50%;background:#38b6c8;cursor:pointer;border:2px solid #fff}
+.vol-slider::-moz-range-thumb{width:14px;height:14px;border-radius:50%;background:#38b6c8;cursor:pointer;border:2px solid #fff}
+
+.banner-resize-handle{position:absolute;bottom:-5px;left:20px;right:20px;height:10px;cursor:ns-resize;z-index:15;display:flex;align-items:center;justify-content:center;opacity:0;transition:opacity 0.2s}
+.banner-resize-handle::after{content:'';width:40px;height:3px;border-radius:2px;background:rgba(56,182,200,0.6)}
+.top-banner:hover .banner-resize-handle{opacity:1}
+.rule-emoji-d{font-size:20px;line-height:1;animation:rIn 0.35s ease;transition:font-size 0.2s}
+.rule-text-d{font-family:'Fredoka One',sans-serif;font-size:14px;color:var(--text);animation:rIn 0.35s ease;transition:font-size 0.2s}
+</style>
+</head>
+<body class="bg-studs theme-day">
+<div class="shell">
+  <div class="tab-bar" id="tabBar"></div>
+  <div class="top-banner">
+    <button class="banner-action-btn" id="arrangeFab" onclick="toggleArrange()">✥ Arrange</button>
+    <div class="tb-label">🏠 Rules</div>
+    <button class="bnav" onclick="prevRule()">◀</button>
+    <div class="tb-content"><span class="rule-emoji-d" id="ruleEmoji">📺</span><span class="rule-text-d" id="ruleText">Loading...</span></div>
+    <div class="rule-dots-d" id="ruleDots"></div>
+    <button class="bnav" onclick="nextRule()">▶</button>
+    <div class="sp-badge" id="specialBanner"></div>
+    <button class="bedit" onclick="startPin('rules')">✏️ Edit</button>
+    <div class="vol-wrap">
+      <span class="vol-icon" id="volIcon" onclick="toggleMute()">🔊</span>
+      <input type="range" class="vol-slider" id="volSlider" min="0" max="100" value="60" oninput="setVolume(this.value)">
+    </div>
+    <button class="banner-action-btn" id="parentFab" onclick="startPin('settings')">🔒 Parent</button>
+    <div class="banner-resize-handle" id="bannerResizeHandle"></div>
+  </div>
+  <div class="grid-area" id="gridArea"></div>
+</div>
+
+
+<div class="overlay" id="pinOv">
+  <div class="pin-wrap">
+    <div class="pin-title">🔒 Parent Access</div>
+    <div class="pin-sub">Enter your PIN</div>
+    <div class="pin-dots" id="pinDots"><div class="pin-dot" id="pd0"></div><div class="pin-dot" id="pd1"></div><div class="pin-dot" id="pd2"></div><div class="pin-dot" id="pd3"></div></div>
+    <div class="pin-grid" id="pinGrid"></div>
+    <div class="pin-err" id="pinErr"></div>
+    <button class="btn-cx" style="margin-top:8px;width:130px" onclick="closePin()">Cancel</button>
+    <div style="font-size:10px;font-weight:800;color:rgba(56,182,200,0.5);margin-top:6px">Default PIN: 1234</div>
+  </div>
+</div>
+<div class="overlay" id="parentOv">
+  <button class="close-btn" onclick="closeParentOv()">✕ Close</button>
+  <div class="parent-tabs">
+    <div class="ptab active" id="ptab-cal" onclick="switchPTab('cal')">📅 Calendar</div>
+    <div class="ptab" id="ptab-special" onclick="switchPTab('special')">🎉 Special</div>
+    <div class="ptab" id="ptab-rules" onclick="switchPTab('rules')">🏠 Rules</div>
+    <div class="ptab" id="ptab-chores" onclick="switchPTab('chores')">✏️ Chores</div>
+    <div class="ptab" id="ptab-ready" onclick="switchPTab('ready')">⏰ Ready</div>
+    <div class="ptab" id="ptab-panels" onclick="switchPTab('panels')">👁 Panels</div>
+    <div class="ptab" id="ptab-coins" onclick="switchPTab('coins')">🪙 Coins</div>
+    <div class="ptab" id="ptab-alarms" onclick="switchPTab('alarms')">⏰ Alarms</div>
+  </div>
+  <div id="panelCal" style="width:100%">
+    <div class="cal-header"><button class="cal-nav" onclick="changeMonth(-1)">◀</button><div class="cal-h-title" id="calTitle"></div><button class="cal-nav" onclick="changeMonth(1)">▶</button></div>
+    <div class="cal-wdays"><div class="cal-wdn">Su</div><div class="cal-wdn">Mo</div><div class="cal-wdn">Tu</div><div class="cal-wdn">We</div><div class="cal-wdn">Th</div><div class="cal-wdn">Fr</div><div class="cal-wdn">Sa</div></div>
+    <div class="cal-days" id="calGrid"></div>
+    <div class="ev-list-sec"><div class="ev-list-title" id="evListTitle">Events</div><div id="evListItems"></div></div>
+    <div class="add-form">
+      <div class="add-form-title">+ Add Appointment</div>
+      <div class="form-row"><label>Title</label><input type="text" id="evTitle" placeholder="e.g. Dentist, Soccer..."></div>
+      <div class="form-row"><label>Date</label><input type="date" id="evDate"></div>
+      <div class="form-row"><label>Time</label><input type="time" id="evTime"></div>
+      <div class="form-row"><label>Who?</label><select id="evWho"><option value="family">🏠 Whole Family</option><option value="lexie">🌸 Lexie</option><option value="mel">🌻 Mel</option><option value="ben">🚀 Ben</option><option value="nate">⚡ Nate</option></select></div>
+      <div class="form-row"><label>Repeat</label><select id="evRepeat"><option value="none">No repeat</option><option value="weekly">Every week</option><option value="fortnightly">Every fortnight</option><option value="monthly">Every month</option></select></div>
+      <div class="form-row"><label>Notes</label><textarea id="evNotes" placeholder="Any extra details..."></textarea></div>
+      <div class="fbtn-row"><button class="btn-cx" onclick="clearEv()">Clear</button><button class="btn-save" onclick="saveEv()">Save 🎉</button></div>
+    </div>
+  </div>
+  <div id="panelSpecial" style="width:100%;display:none">
+    <div class="section-title">🎉 Special Events & Holidays</div>
+    <p style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:10px">Events, public holidays, and away weekends — show on calendar and affect kid cards.</p>
+    <div id="specialEvList"></div>
+    <div class="add-form">
+      <div class="add-form-title">+ Add Special Event</div>
+      <div class="form-row"><label>Type</label>
+        <div class="sp-type-tabs">
+          <div class="sp-type-tab active" id="spt-event" onclick="selSpType('event')">🎉 Event</div>
+          <div class="sp-type-tab" id="spt-holiday" onclick="selSpType('holiday')">🏖 Holiday</div>
+          <div class="sp-type-tab" id="spt-away-mel" onclick="selSpType('away-mel')">🌻 Mel Away</div>
+          <div class="sp-type-tab" id="spt-away-ben" onclick="selSpType('away-ben')">🚀 Ben Away</div>
+          <div class="sp-type-tab" id="spt-away-both" onclick="selSpType('away-both')">👨‍👧‍👦 Both Away</div>
+        </div>
+      </div>
+      <div class="form-row"><label>Name</label><input type="text" id="spTitle" placeholder="e.g. Christmas..."></div>
+      <div class="form-row"><label>Emoji</label><input type="text" id="spEmoji" placeholder="🎄" maxlength="2" style="max-width:80px"></div>
+      <div class="form-row"><label>Start Date</label><input type="date" id="spStart"></div>
+      <div class="form-row"><label>End Date</label><input type="date" id="spEnd"></div>
+      <div class="form-row" id="spColorRow-wrap"><label>Colour</label><div class="type-row" id="spColorRow"></div></div>
+      <div class="form-row" id="spPublicHolidays-wrap" style="display:none">
+        <label>Quick add public holiday</label>
+        <div id="publicHolidaysList" style="display:flex;gap:5px;flex-wrap:wrap;margin-top:4px"></div>
+      </div>
+      <div class="fbtn-row"><button class="btn-cx" onclick="clearSp()">Clear</button><button class="btn-save" onclick="saveSp()">Add 🎉</button></div>
+    </div>
+  </div>
+  <div id="panelRules" style="width:100%;display:none">
+    <div class="section-title">🏠 House Rules</div>
+    <p style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:10px">Rules rotate in the top banner every 10 seconds.</p>
+    <div id="rulesEditorList"></div>
+    <div style="display:flex;gap:6px;margin-top:8px">
+      <input type="text" id="newRuleEmoji" placeholder="📺" maxlength="2" style="width:48px;background:rgba(56,182,200,0.1);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:6px;font-size:16px;text-align:center;color:var(--text)">
+      <input type="text" id="newRuleText" placeholder="Type a new rule..." style="flex:1;background:rgba(56,182,200,0.1);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:6px 9px;font-family:'Nunito',sans-serif;font-size:12px;font-weight:700;color:var(--text)">
+      <button class="add-chore-btn" onclick="addRule()">+ Add</button>
+    </div>
+    <button class="btn-save" style="width:100%;margin-top:10px" onclick="saveRules()">Save Rules 🎉</button>
+  </div>
+  <div id="panelChores" style="width:100%;display:none">
+    <div class="section-title">✏️ Edit Chores</div>
+    <p style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:10px">Tap a segment to expand.</p>
+    <div id="choreEditorPanel"></div>
+  </div>
+  <div id="panelPanels" style="width:100%;display:none">
+    <div class="section-title">👁 Show / Hide Panels</div>
+    <p style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:12px">Toggle panels on or off. Changes take effect immediately.</p>
+    <div id="panelToggleList"></div>
+  </div>
+  <div id="panelAlarms" style="width:100%;display:none">
+    <div class="section-title">⏰ Alarms</div>
+    <p style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:12px">Set alarms for each child. Choose red 🔴 (urgent), yellow 🟡 (warning) or green 🟢 (go time). A traffic light will flash on screen and play a sound.</p>
+    <div id="alarmEditorList"></div>
+  </div>
+  <div id="panelCoins" style="width:100%;display:none">
+    <div class="section-title">🪙 Coin Manager</div>
+    <p style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:12px">Add or spend coins for each child. Kids can see their totals on the main screen but can't change them.</p>
+    <div id="coinManagerList"></div>
+  </div>
+  <div id="panelReady" style="width:100%;display:none">
+    <div class="section-title">⏰ Per-Child Ready Times</div>
+    <p style="font-size:11px;font-weight:700;color:var(--sub);margin-bottom:10px">Shows during morning (7am–12pm) only.</p>
+    <div id="readyTimesPanel"></div>
+    <button class="btn-save" style="width:100%;margin-top:8px" onclick="saveReadyTimes()">Save Ready Times 🎉</button>
+  </div>
+</div>
+<div class="seg-ov" id="segOv"><div class="seg-pop" id="segPopEl"><button class="close-pop" onclick="closeSegPop()">✕</button><div class="sp-title" id="spTitleEl"></div><div class="sp-time-el" id="spTimeEl"></div><div class="sp-tasks" id="spTasks"></div><div class="sp-cd" id="spCd"></div></div></div>
+<div class="ann-ov" id="annOv"><div class="ann-bg-el" id="annBg"></div><div class="ann-pop"><span class="ann-icon" id="annIcon"></span><div class="ann-title" id="annTitle"></div><div class="ann-sub" id="annSub"></div><button class="ann-dismiss" onclick="closeAnn()">OK! 👍</button></div></div>
+<div class="cuckoo-ov" id="cuckooOv"><div class="cuckoo-egg-wrap"><span class="egg-bird">🐣</span><span class="cuckoo-time-lbl" id="cuckooTime"></span><div class="cuckoo-cues" id="cuckooCues"></div><button class="cuckoo-ok" onclick="closeCuckoo()">OK! 👍</button></div></div>
+<div class="reward-ov" id="rewardOv"><div class="reward-pop"><div class="rw-title" id="rwTitle">Coins!</div><div class="rw-coins" id="rwCoins">🪙 0</div><div class="rw-btns"><button class="rw-btn" style="background:#ff8fbe" onclick="rwAdd(1)">+1 🪙</button><button class="rw-btn" style="background:#ffb84d" onclick="rwAdd(5)">+5 🪙</button><button class="rw-btn" style="background:#5bc8ff" onclick="rwAdd(10)">+10 🥳</button><button class="rw-btn" style="background:#e57373" onclick="rwSpend()">Spend 🛍</button></div><button class="btn-cx" style="margin-top:10px;width:100%" onclick="closeReward()">Done</button></div></div>
+<div class="confirm-ov" id="confirmOv"><div class="confirm-pop"><div class="confirm-title" id="confirmTitle"></div><div class="confirm-msg" id="confirmMsg"></div><div class="confirm-btns" id="confirmBtns"></div></div></div>
+
+<script>
+const DC={lexie:{night:['Set out clothes','Check school bag','Read quietly','Lights out'],morning:['Get dressed','Eat breakfast','Brush teeth & hair','Pack school bag'],afternoon:['Homework first','Feed the cat','Tidy your room','Outdoor play'],evening:['Set the dinner table','Help clear dishes','Bath or shower','Get PJs on']},mel:{night:['Set out clothes','Tidy your desk','Read quietly','Lights out'],morning:['Get dressed','Eat breakfast','Brush hair','Pack bag & lunch'],afternoon:['Homework done','Water the plants','Unstack dishwasher','Free play'],evening:['Help cook dinner','Clear the table','Shower','Bedtime routine']},ben:{night:['Put school things ready','Put toys away','Quiet time','Sleep tight 😴'],morning:['Get dressed','Eat breakfast','Brush teeth','Shoes on & ready 🎒'],afternoon:['Snack time 🍎','Homework','Play outside','Put bag away'],evening:['Dinner time 🍽','Family time','Bath','Pyjamas on']},nate:{night:['Put school things ready','Tidy room','Quiet time','Sleep'],morning:['Get dressed','Eat breakfast','Brush teeth','Shoes on & ready 🎒'],afternoon:['Snack 🍎','Homework','Play time','Bag away'],evening:['Dinner 🍽','Family time','Shower','Pyjamas & bed']}};
+const DR=[{emoji:'📺',text:'We take turns picking the movie'},{emoji:'🎮',text:'Games off 30 mins before bed'},{emoji:'🍽',text:'Everyone helps clear the table'},{emoji:'📱',text:'No screens during dinner'},{emoji:'🤝',text:'We speak kindly to each other'},{emoji:'🧹',text:'Tidy your mess before bed'}];
+const KIDS={lexie:{name:'Lexie',emoji:'🌸'},mel:{name:'Mel',emoji:'🌻'},ben:{name:'Ben',emoji:'🚀'},nate:{name:'Nate',emoji:'⚡'}};
+const SEGS=[{id:'morning',name:'Morning',emoji:'☀️',startRH:7,endRH:12,realStart:420,realEnd:720,col:'#ffcc44',tasks:['Get dressed','Eat breakfast','Brush teeth','Pack bag'],ann:{bg:'linear-gradient(160deg,#ff9900,#ffe066)',icon:'☀️',msgs:['Good morning! Rise and shine! ☀️','Wakey wakey, superstars! 🌅','Rise and shine! Great day ahead! ⭐']}},{id:'afternoon',name:'Afternoon',emoji:'🌤',startRH:12,endRH:17,realStart:720,realEnd:1020,col:'#55ddaa',tasks:['Homework first!','Snack time','Play outside'],ann:{bg:'linear-gradient(160deg,#009955,#55ddaa)',icon:'🌤',msgs:['Good afternoon! School\'s done! 🎒','Home time — homework then play! 🌤','Afternoon! Snack time first! 🍎']}},{id:'evening',name:'Evening',emoji:'🌆',startRH:17,endRH:19,realStart:1020,realEnd:1140,col:'#ff88cc',tasks:['Dinner together 🍽','Family time','Bath or shower','Pyjamas on 🧸'],ann:{bg:'linear-gradient(160deg,#990066,#ff88cc)',icon:'🌆',msgs:['Good evening! Family time! 🌆','Dinner time everyone! 🍽','Evening — wind down time 🌇']}},{id:'night',name:'Night Time',emoji:'🌙',startRH:19,endRH:31,realStart:1140,realEnd:1860,col:'#a088ff',tasks:['Wind down quietly','Get ready for bed','Sleep tight 😴'],ann:{bg:'linear-gradient(160deg,#220088,#8866ff)',icon:'🌙',msgs:['Goodnight! Sweet dreams! 🌙','Night night — sleep tight! ⭐','Bedtime! Rest up for tomorrow! 💫']}}];
+const SL={night:'NIGHT 💤',morning:'MORNING ☀️',afternoon:'AFTERNOON 🌤',evening:'EVENING 🌆'};
+const SC={morning:'#fff3cc',afternoon:'#d0f7ea',evening:'#fce0f0',night:'#e8e4ff'};
+const TH={morning:'theme-day',afternoon:'theme-afternoon',evening:'theme-evening',night:'theme-night'};
+const SPC=['#ff6b9d','#ff8c42','#ffd700','#4ecb71','#4fc3f7','#38b6c8','#f06292','#26c6da'];
+const EC=['#ff8fbe','#ffb84d','#5bc8ff','#5ddb8a','#38b6c8','#ffd700'];
+const DN=['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+const DT=[{s:'SUN',ac:'#ffb8d8'},{s:'MON',ac:'#ff8fbe'},{s:'TUE',ac:'#ffcc44'},{s:'WED',ac:'#5ddb8a'},{s:'THU',ac:'#5bc8ff'},{s:'FRI',ac:'#38b6c8'},{s:'SAT',ac:'#ff88ee'}];
+const G=6;
+let spCol=SPC[0],cTheme='theme-day',rIdx=0,rTimer=null,pTarget='settings',eRules=[];
+let arranging=false;
+function gsi(m){const r=m%1440;if(r>=420&&r<720)return 0;if(r>=720&&r<1020)return 1;if(r>=1020&&r<1140)return 2;return 3;}
+function h2a(h){return(h/12)*Math.PI*2-Math.PI/2;}
+function apTh(s){const t=TH[s]||'theme-day';if(t===cTheme)return;cTheme=t;document.body.className='bg-studs '+t;}
+function ls(k,fb){const ks=['fhq9_','fhq8_','fhq7_','fhq6_'].map(p=>p+k);for(const kk of ks){try{const v=localStorage.getItem(kk);if(v!==null)return[kk,JSON.parse(v)];}catch(e){}}return['fhq9_'+k,fb];}
+const [EK,EI]=ls('ev','[]');const [CK,CI]=ls('coins','{"lexie":0,"mel":0,"ben":0,"nate":0}');const [CHK,CHI]=ls('chores','{}');const [CCK,CCI]=ls('customChores',JSON.stringify(DC));const [RDK,RDI]=ls('ready',JSON.stringify({lexie:{enabled:true,time:'07:30'},mel:{enabled:true,time:'07:30'},ben:{enabled:true,time:'07:30'},nate:{enabled:true,time:'07:30'}}));
+let evs=Array.isArray(EI)?EI:JSON.parse(EI||'[]');let coins=typeof CI==='object'&&!Array.isArray(CI)?CI:JSON.parse(CI||'{}');let cd=typeof CHI==='object'&&!Array.isArray(CHI)?CHI:JSON.parse(CHI||'{}');let cc=typeof CCI==='object'&&!Array.isArray(CCI)?CCI:JSON.parse(CCI||JSON.stringify(DC));let rt=typeof RDI==='object'&&!Array.isArray(RDI)?RDI:JSON.parse(RDI||'{}');
+let spEvs=JSON.parse(localStorage.getItem('fhq9_special')||'[]');let hr=JSON.parse(localStorage.getItem('fhq9_rules')||JSON.stringify(DR));let mp=JSON.parse(localStorage.getItem('fhq9_movie2')||'{"lexie":false,"mel":false,"ben":false,"nate":false}');let pin=localStorage.getItem('fhq9_pin')||'1234';
+let calY=new Date().getFullYear(),calM=new Date().getMonth(),selD=null,pBuf='',pSI=-1,rwK=null,lSI=-1,lHr=-1;
+let tSO=-1,tNO=null,ttA=false,ttS=0;
+function sv(){localStorage.setItem(EK,JSON.stringify(evs));localStorage.setItem(CK,JSON.stringify(coins));localStorage.setItem(CHK,JSON.stringify(cd));localStorage.setItem(CCK,JSON.stringify(cc));localStorage.setItem(RDK,JSON.stringify(rt));localStorage.setItem('fhq9_special',JSON.stringify(spEvs));localStorage.setItem('fhq9_rules',JSON.stringify(hr));localStorage.setItem('fhq9_movie2',JSON.stringify(mp));}
+function gkc(kid,seg){
+  const dow=new Date().getDay(); // 0=Sun,6=Sat
+  const isWknd=(dow===0||dow===6);
+  const suffix=isWknd?'_weekend':'_weekday';
+  // If a day-specific list exists use it, otherwise fall back to default list
+  if(cc[kid]&&cc[kid][seg+suffix]&&cc[kid][seg+suffix].length)
+    return cc[kid][seg+suffix];
+  return(cc[kid]&&cc[kid][seg])||DC[kid][seg]||[];
+}
+function tds(){return new Date().toISOString().split('T')[0];}
+function gas(ds){return spEvs.filter(s=>ds>=s.start&&ds<=s.end);}
+function tmp(kid){mp[kid]=!mp[kid];sv();rmb();}
+function rmb(){Object.keys(KIDS).forEach(k=>{const b=document.getElementById('movie-'+k);if(!b)return;if(mp[k]){b.textContent='🎬 ✓ Picked!';b.classList.add('picked');}else{b.textContent='🎬 Pick?';b.classList.remove('picked');}});}
+function sr(i){if(!hr.length)return;rIdx=(i+hr.length)%hr.length;const r=hr[rIdx];document.getElementById('ruleEmoji').textContent=r.emoji||'📋';document.getElementById('ruleText').textContent=r.text;const d=document.getElementById('ruleDots');d.innerHTML='';hr.forEach((_,j)=>{const dot=document.createElement('div');dot.className='rdot'+(j===rIdx?' active':'');d.appendChild(dot);});}
+function nextRule(){clearRuleTimer();sr(rIdx+1);startRuleTimer();}function prevRule(){clearRuleTimer();sr(rIdx-1);startRuleTimer();}
+function startRuleTimer(){clearRuleTimer();if(hr.length>1)rTimer=setInterval(()=>sr(rIdx+1),10000);}function clearRuleTimer(){if(rTimer)clearInterval(rTimer);rTimer=null;}
+function bre(){eRules=JSON.parse(JSON.stringify(hr));rre();}
+function rre(){const c=document.getElementById('rulesEditorList');c.innerHTML='';eRules.forEach((r,i)=>{const row=document.createElement('div');row.className='rule-edit-row';row.innerHTML=`<input class="rule-emoji-input" type="text" value="${r.emoji}" maxlength="2" onchange="eRules[${i}].emoji=this.value"><input class="rule-text-input" type="text" value="${r.text.replace(/"/g,'&quot;')}" onchange="eRules[${i}].text=this.value"><button class="rule-del-btn" onclick="eRules.splice(${i},1);rre()">✕</button>`;c.appendChild(row);});}
+function addRule(){const e=document.getElementById('newRuleEmoji').value||'📋';const t=document.getElementById('newRuleText').value.trim();if(!t)return;eRules.push({emoji:e,text:t});document.getElementById('newRuleEmoji').value='';document.getElementById('newRuleText').value='';rre();}
+function saveRules(){hr=JSON.parse(JSON.stringify(eRules));sv();sr(0);startRuleTimer();const b=event.target;b.textContent='Saved! ✅';setTimeout(()=>{b.textContent='Save Rules 🎉';},2000);}
+function rsb(){const a=gas(tds());const b=document.getElementById('specialBanner');if(!a.length){b.style.display='none';return;}const s=a[0];b.style.cssText=`display:block;background:linear-gradient(135deg,${s.color}cc,${s.color}88)`;b.textContent=s.emoji+' '+s.title;}
+/* ─ LAYOUT ENGINE ─ */
+// Panels stored as fractions of gridArea W/H
+let pDefs=[];
+function defLayout(W,H){
+  const gPx=G; // gap in pixels
+  const gf=gPx/W, ghf=gPx/H; // gap as fraction
+  // Fixed pixel gaps, everything else fills remaining space
+  const lw=0.22, cw=0.33;
+  // Right column: whatever is left after left col + clock + 2 gaps
+  const rx=lw+cw+gf*2;
+  const rw=Math.max(0.13, 1.0-rx-gf); // ensure doesn't overflow, leave 1 gap on right
+  const hh=0.5-ghf/2; // half height minus half gap
+  return[
+    {id:'lexie',cl:'lexie-card',x:0,y:0,w:lw,h:hh,mw:0.13,mh:0.25},
+    {id:'ben',cl:'ben-card',x:0,y:0.5+ghf/2,w:lw,h:hh,mw:0.13,mh:0.25},
+    {id:'clock',cl:'',x:lw+gf,y:0,w:cw,h:0.74,mw:0.22,mh:0.4},
+    {id:'mel',cl:'mel-card',x:rx,y:0,w:rw,h:hh,mw:0.13,mh:0.25},
+    {id:'nate',cl:'nate-card',x:rx,y:0.5+ghf/2,w:rw,h:hh,mw:0.13,mh:0.25},
+    {id:'today',cl:'today-panel',x:lw+g,y:0.76,w:cw*0.65,h:0.24,mw:0.12,mh:0.1},
+    {id:'strip',cl:'strip-panel',x:lw+g+cw*0.65+g,y:0.82,w:cw*0.35-g,h:0.18,mw:0.1,mh:0.07},
+  ];
+}
+function loadLayout(W,H){
+  const s=localStorage.getItem('fhq9_pL2');
+  if(s){
+    try{
+      const p=JSON.parse(s);
+      if(p.length>=5){
+        // Validate: ensure no panel overflows
+        const gf=G/W;
+        let ok=true;
+        p.forEach(d=>{ if(d.x+d.w>1.02||d.y+d.h>1.02) ok=false; });
+        if(ok) return p;
+      }
+    }catch(e){}
+  }
+  return defLayout(W,H);
+}
+function saveLayout(){localStorage.setItem('fhq9_pL2',JSON.stringify(pDefs));}
+function apPD(el,d,W,H){
+  // Clamp so panel never extends beyond grid area
+  const x=Math.round(d.x*W);
+  const y=Math.round(d.y*H);
+  const w=Math.round(d.w*W);
+  const h=Math.round(d.h*H);
+  const cx=Math.min(x, W-w);
+  const cy=Math.min(y, H-h);
+  el.style.left=Math.max(0,cx)+'px';
+  el.style.top=Math.max(0,cy)+'px';
+  el.style.width=w+'px';
+  el.style.height=h+'px';
+}
+function scClock(W,H){
+  const d=pDefs.find(p=>p.id==='clock');if(!d)return;
+  const pw=d.w*W, ph=d.h*H;
+  // Scale factor: 1.0 = reference panel of 370x520px
+  const sc=Math.min(pw/370, ph/520);
+  const f=Math.max(0.45, Math.min(2.2, sc));
+
+  // Canvas: scale proportionally, capped sensibly
+  const sz=Math.round(Math.max(80, Math.min(520, 300*f)));
+  const cv=document.getElementById('clockCanvas');
+  if(cv){cv.style.width=sz+'px';cv.style.height=sz+'px';}
+
+  // Title
+  const title=document.querySelector('.app-title');
+  if(title)title.style.fontSize=Math.round(18*f)+'px';
+
+  // Date line
+  const dl=document.getElementById('dateLine');
+  if(dl)dl.style.fontSize=Math.round(10*f)+'px';
+
+  // Time display
+  const tb=document.getElementById('clockTimeBig');
+  if(tb)tb.style.fontSize=Math.round(26*f)+'px';
+  const ta=document.getElementById('clockAmpm');
+  if(ta)ta.style.fontSize=Math.round(15*f)+'px';
+
+  // Segment bar wrap
+  const cdw=document.querySelector('.cd-wrap');
+  if(cdw)cdw.style.padding=Math.round(5*f)+'px '+Math.round(8*f)+'px';
+
+  // Segment bar name + time
+  const cdn=document.getElementById('cdName');
+  if(cdn)cdn.style.fontSize=Math.round(12*f)+'px';
+  const cdt=document.getElementById('cdTime');
+  if(cdt)cdt.style.fontSize=Math.round(13*f)+'px';
+
+  // Segment bar track height
+  const cdt2=document.querySelector('.cd-track');
+  if(cdt2)cdt2.style.height=Math.round(15*f)+'px';
+
+  // cd-tasks
+  const cdtasks=document.getElementById('cdTasks');
+  if(cdtasks)cdtasks.style.fontSize=Math.round(9*f)+'px';
+
+  // Test buttons
+  document.querySelectorAll('.test-btn').forEach(b=>{
+    b.style.fontSize=Math.round(9*f)+'px';
+    b.style.padding=Math.round(2*f)+'px '+Math.round(6*f)+'px';
+  });
+  // Ready countdown rows
+  document.querySelectorAll('.ready-clock-name').forEach(el=>el.style.fontSize=Math.round(14*f)+'px');
+  document.querySelectorAll('.ready-clock-time').forEach(el=>el.style.fontSize=Math.round(16*f)+'px');
+  document.querySelectorAll('.ready-clock-emoji').forEach(el=>el.style.fontSize=Math.round(18*f)+'px');
+  document.querySelectorAll('.ready-clock-track').forEach(el=>el.style.height=Math.round(14*f)+'px');
+}
+function initGrid(){
+  const ga=document.getElementById('gridArea');
+  const W=ga.offsetWidth,H=ga.offsetHeight;
+  pDefs=loadLayout(W,H);
+  ga.innerHTML='';
+  pDefs.forEach(d=>{
+    const p=document.createElement('div');
+    p.className='panel'+(d.cl?' '+d.cl:'');
+    
+    p.id='panel-'+d.id;
+    if(d.id==='clock'){p.appendChild(mkClock());}
+    else if(d.id==='today'){p.appendChild(mkToday());}
+    else if(d.id==='strip'){p.appendChild(mkStrip());}
+    else{p.appendChild(mkKid(d.id));}
+    if(true){
+      ['e','s','se','w','n','nw'].forEach(dir=>{
+        const h=document.createElement('div');h.className='rhandle-'+dir;p.appendChild(h);
+        h.addEventListener('mousedown',e=>startResize(e,d,dir));
+        h.addEventListener('touchstart',e=>startResizeTouch(e,d,dir),{passive:false});
+      });
+      p.addEventListener('mousedown',e=>startDrag(e,p,d));
+      p.addEventListener('touchstart',e=>startDragTouch(e,p,d),{passive:false});
+    }
+    ga.appendChild(p);
+    apPD(p,d,W,H);
+  });
+  scClock(W,H);
+}
+// Re-scale clock on window resize
+window.addEventListener('resize',()=>{
+  const ga=document.getElementById('gridArea');
+  if(!ga)return;
+  // Re-apply all panel positions with new grid dimensions
+  const W=ga.offsetWidth, H=ga.offsetHeight;
+  if(W<10||H<10)return; // not ready yet
+  pDefs.forEach(d=>{
+    const el=document.getElementById('panel-'+d.id);
+    if(el)apPD(el,d,W,H);
+  });
+  scClock(W,H);
+});
+window.addEventListener('orientationchange',()=>{
+  setTimeout(()=>{
+    const ga=document.getElementById('gridArea');
+    if(!ga)return;
+    const W=ga.offsetWidth,H=ga.offsetHeight;
+    pDefs.forEach(d=>{
+      const el=document.getElementById('panel-'+d.id);
+      if(el)apPD(el,d,W,H);
+    });
+    scClock(W,H);
+  },300);
+});
+function mkKid(kid){
+  const d=document.createElement('div');d.className='panel-inner';
+  d.innerHTML=`<div class="kid-header"><div class="kid-name">${KIDS[kid].emoji} ${KIDS[kid].name}</div><div class="movie-badge" id="movie-${kid}" onclick="tmp('${kid}')">🎬 Pick?</div></div><div class="seg-lbl" id="lbl-${kid}">MORNING CHORES</div><ul class="chore-list" id="chores-${kid}"></ul><div class="coins-row" style="cursor:default"><span style="font-size:14px">🪙</span><span class="coin-ct" id="coins-${kid}">0</span><span class="coin-lbl">coins</span></div>`;
+  return d;
+}
+function mkClock(){
+  const d=document.createElement('div');d.className='clock-inner';
+  d.innerHTML=`<div class="clock-card" style="width:100%"><div class="app-title">🌈 Family HQ</div><div class="date-line" id="dateLine"></div><div class="clock-time-row"><span class="clock-time-big" id="clockTimeBig">12:00</span><span class="clock-ampm" id="clockAmpm">pm</span></div><canvas id="clockCanvas" width="300" height="300" style="display:block;cursor:pointer;max-width:100%"></canvas><div id="readyCountdownWrap" style="display:none;width:100%;margin-top:4px"></div>
+<div class="cd-wrap" id="cdSegWrap" style="width:100%"><div class="cd-top"><div class="cd-name" id="cdName"></div><div class="cd-time" id="cdTime"></div></div><div class="cd-track"><div class="cd-fill" id="cdFill"><div class="cd-arrow" id="cdArrow"></div></div></div><div class="cd-tasks" id="cdTasks"></div></div><div class="test-bar"><button class="test-btn" onclick="tCuckoo()">🐣</button><button class="test-btn" onclick="tSeg(0)">☀️</button><button class="test-btn" onclick="tSeg(1)">🌤</button><button class="test-btn" onclick="tSeg(2)">🌆</button><button class="test-btn" onclick="tSeg(3)">🌙</button><button class="test-btn" id="ttBtn" onclick="tTimers()">⏱ Ready</button><button class="test-btn" onclick="tAlarm()">🚨 Alarm</button><button class="test-btn" onclick="hardRefresh()">↻ Refresh</button></div></div>`;
+  return d;
+}
+function mkToday(){
+  const d=document.createElement('div');d.style.cssText='padding:8px 10px;display:flex;flex-direction:column;height:100%;min-height:0;overflow:hidden';
+  d.innerHTML=`<div style="display:flex;align-items:center;justify-content:center;gap:6px;margin-bottom:6px;flex-shrink:0;position:relative">
+    <span style="font-family:'Fredoka One',sans-serif;font-size:13px;color:var(--text);opacity:0.9">📅 Today's Plan</span>
+    <button class="ref-btn" id="refreshBtn" onclick="refreshFeed()" style="position:absolute;right:0"><span class="ref-icon">↻</span></button>
+  </div>
+  <div class="ev-chips-row" id="todayEvList" style="flex-direction:column;gap:5px;flex:1;overflow:hidden;display:flex"></div>`;
+  return d;
+}
+function mkStrip(){
+  const d=document.createElement('div');d.style.cssText='padding:6px 12px;display:flex;align-items:center;justify-content:center;height:100%';
+  d.innerHTML=`<div class="strip-msg" id="stripMsg">You're all superstars! 🌈</div>`;
+  return d;
+}
+/* drag */
+function startDrag(e,el,d){
+  if(!arranging)return;
+  if(e.target.closest('.rhandle-e,.rhandle-s,.rhandle-se,.rhandle-w,.rhandle-n,.rhandle-nw'))return;
+  if(e.target.closest('.chore-item,.coins-row,.plus-btn,.movie-badge,.test-btn'))return;
+  e.preventDefault();
+  const ga=document.getElementById('gridArea'),W=ga.offsetWidth,H=ga.offsetHeight;
+  let sx=e.clientX,sy=e.clientY,ox=d.x*W,oy=d.y*H;
+  el.style.zIndex=50;
+  const mv=e=>{let nx=(ox+(e.clientX-sx))/W,ny=(oy+(e.clientY-sy))/H;nx=Math.max(0,Math.min(1-d.w,nx));ny=Math.max(0,Math.min(1-d.h,ny));d.x=nx;d.y=ny;el.style.left=Math.round(nx*W)+'px';el.style.top=Math.round(ny*H)+'px';};
+  const up=()=>{el.style.zIndex='';saveLayout();document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',up);};
+  document.addEventListener('mousemove',mv);document.addEventListener('mouseup',up);
+}
+function startDragTouch(e,el,d){
+  if(!arranging)return;
+  if(e.target.closest('.rhandle-e,.rhandle-s,.rhandle-se,.rhandle-w,.rhandle-n,.rhandle-nw'))return;
+  const ga=document.getElementById('gridArea'),W=ga.offsetWidth,H=ga.offsetHeight;
+  const t=e.touches[0];let sx=t.clientX,sy=t.clientY,ox=d.x*W,oy=d.y*H;
+  const mv=e=>{const t=e.touches[0];let nx=(ox+(t.clientX-sx))/W,ny=(oy+(t.clientY-sy))/H;nx=Math.max(0,Math.min(1-d.w,nx));ny=Math.max(0,Math.min(1-d.h,ny));d.x=nx;d.y=ny;el.style.left=Math.round(nx*W)+'px';el.style.top=Math.round(ny*H)+'px';};
+  const up=()=>{saveLayout();el.removeEventListener('touchmove',mv);el.removeEventListener('touchend',up);};
+  el.addEventListener('touchmove',mv,{passive:true});el.addEventListener('touchend',up);
+}
+/* resize */
+function startResize(e,d,dir){
+  if(!arranging)return;
+  e.preventDefault();e.stopPropagation();
+  const ga=document.getElementById('gridArea'),W=ga.offsetWidth,H=ga.offsetHeight;
+  const el=document.getElementById('panel-'+d.id);
+  let sx=e.clientX,sy=e.clientY,ow=d.w*W,oh=d.h*H,ox=d.x*W,oy=d.y*H;
+  const mv=e=>{
+    const dx=e.clientX-sx,dy=e.clientY-sy;
+    // Right edge: grow right
+    if(dir==='e'||dir==='se'){d.w=Math.min(1-d.x,Math.max(d.mw,(ow+dx)/W));}
+    // Bottom edge: grow down
+    if(dir==='s'||dir==='se'){d.h=Math.min(1-d.y,Math.max(d.mh,(oh+dy)/H));}
+    // Left edge: move x, shrink/grow width
+    if(dir==='w'||dir==='nw'){
+      const newX=Math.max(0,Math.min(ox+ow/W-d.mw,(ox+dx)/W));
+      d.w=Math.max(d.mw,(ox+ow/W)-newX);
+      d.x=newX;
+      el.style.left=Math.round(d.x*W)+'px';
+    }
+    // Top edge: move y, shrink/grow height
+    if(dir==='n'||dir==='nw'){
+      const newY=Math.max(0,Math.min(oy+oh/H-d.mh,(oy+dy)/H));
+      d.h=Math.max(d.mh,(oy+oh/H)-newY);
+      d.y=newY;
+      el.style.top=Math.round(d.y*H)+'px';
+    }
+    el.style.width=Math.round(d.w*W)+'px';
+    el.style.height=Math.round(d.h*H)+'px';
+    scClock(W,H);
+  };
+  const up=()=>{saveLayout();document.removeEventListener('mousemove',mv);document.removeEventListener('mouseup',up);};
+  document.addEventListener('mousemove',mv);document.addEventListener('mouseup',up);
+}
+function startResizeTouch(e,d,dir){
+  if(!arranging)return;
+  e.preventDefault();e.stopPropagation();
+  const ga=document.getElementById('gridArea'),W=ga.offsetWidth,H=ga.offsetHeight;
+  const el=document.getElementById('panel-'+d.id);
+  const t0=e.touches[0];let sx=t0.clientX,sy=t0.clientY,ow=d.w*W,oh=d.h*H,ox=d.x*W,oy=d.y*H;
+  const mv=e=>{
+    const t=e.touches[0];const dx=t.clientX-sx,dy=t.clientY-sy;
+    if(dir==='e'||dir==='se'){d.w=Math.min(1-d.x,Math.max(d.mw,(ow+dx)/W));}
+    if(dir==='s'||dir==='se'){d.h=Math.min(1-d.y,Math.max(d.mh,(oh+dy)/H));}
+    if(dir==='w'||dir==='nw'){const nx=Math.max(0,Math.min(ox+ow/W-d.mw,(ox+dx)/W));d.w=Math.max(d.mw,(ox+ow/W)-nx);d.x=nx;el.style.left=Math.round(d.x*W)+'px';}
+    if(dir==='n'||dir==='nw'){const ny=Math.max(0,Math.min(oy+oh/H-d.mh,(oy+dy)/H));d.h=Math.max(d.mh,(oy+oh/H)-ny);d.y=ny;el.style.top=Math.round(d.y*H)+'px';}
+    el.style.width=Math.round(d.w*W)+'px';el.style.height=Math.round(d.h*H)+'px';scClock(W,H);
+  };
+  const up=()=>{saveLayout();e.target.removeEventListener('touchmove',mv);e.target.removeEventListener('touchend',up);};
+  e.target.addEventListener('touchmove',mv,{passive:false});e.target.addEventListener('touchend',up);
+}
+function toggleArrange(){
+  arranging=!arranging;
+  const ga=document.getElementById('gridArea');
+  const btn=document.getElementById('arrangeFab');
+  if(arranging){ga.classList.add('arrange-mode');btn.textContent='✓ Done';btn.classList.add('arranging');}
+  else{ga.classList.remove('arrange-mode');btn.textContent='✥ Arrange';btn.classList.remove('arranging');}
+}
+/* clock canvas */
+let cv,cx2;
+function initCC(){
+  cv=document.getElementById('clockCanvas');cx2=cv.getContext('2d');
+  cv.addEventListener('click',e=>{const r=cv.getBoundingClientRect();const sc=300/r.width;const dx=(e.clientX-r.left)*sc-150,dy=(e.clientY-r.top)*sc-150;if(Math.sqrt(dx*dx+dy*dy)<147){pSI=gsi(new Date().getHours()*60+new Date().getMinutes());oSP();}});
+}
+function dCloud(x,y,w,h,col){cx2.save();cx2.fillStyle=col;cx2.beginPath();cx2.ellipse(x,y,w/2,h/2,0,0,Math.PI*2);cx2.fill();cx2.beginPath();cx2.ellipse(x-w*0.24,y+h*0.12,w*0.30,h*0.42,0,0,Math.PI*2);cx2.fill();cx2.beginPath();cx2.ellipse(x+w*0.24,y+h*0.12,w*0.30,h*0.42,0,0,Math.PI*2);cx2.fill();cx2.restore();}
+function dSky(iN){
+  const sz=300,c=150;cx2.save();cx2.beginPath();cx2.arc(c,c,sz*0.383,0,Math.PI*2);cx2.clip();
+  if(iN){const g=cx2.createRadialGradient(c,c,0,c,c,sz*0.383);g.addColorStop(0,'#2a1880');g.addColorStop(1,'#0d0535');cx2.fillStyle=g;cx2.fillRect(c-sz*0.383,c-sz*0.383,sz*0.766,sz*0.766);[[102,80],[70,100],[183,66],[203,108],[142,90],[84,144],[200,138],[159,74],[188,160],[132,148]].forEach(([x,y])=>{const tw=0.4+0.6*Math.sin(Date.now()/700+(x+y*0.7)%6);cx2.beginPath();cx2.arc(x,y,1.4,0,Math.PI*2);cx2.fillStyle=`rgba(255,252,200,${tw})`;cx2.fill();});cx2.save();cx2.translate(c,c-6);cx2.beginPath();cx2.arc(0,0,35,0,Math.PI*2);const mg=cx2.createRadialGradient(-9,-9,4,0,0,35);mg.addColorStop(0,'#fff8a0');mg.addColorStop(0.6,'#f5d800');mg.addColorStop(1,'#e0a000');cx2.fillStyle=mg;cx2.fill();cx2.beginPath();cx2.arc(14,2,29,0,Math.PI*2);cx2.fillStyle='#1a0d60';cx2.fill();cx2.strokeStyle='#a07000';cx2.lineWidth=2.5;cx2.lineCap='round';cx2.beginPath();cx2.arc(-14,-4,4.5,Math.PI,Math.PI*2);cx2.stroke();cx2.beginPath();cx2.arc(-14,7,5.5,0,Math.PI);cx2.stroke();cx2.restore();}
+  else{const g=cx2.createRadialGradient(c,c-17,8,c,c,sz*0.383);g.addColorStop(0,'#d0eeff');g.addColorStop(0.6,'#90ccff');g.addColorStop(1,'#60aaee');cx2.fillStyle=g;cx2.fillRect(c-sz*0.383,c-sz*0.383,sz*0.766,sz*0.766);cx2.save();cx2.translate(c,c-13);for(let i=0;i<12;i++){const ra=(i/12)*Math.PI*2;cx2.beginPath();cx2.moveTo(Math.cos(ra)*37,Math.sin(ra)*37);cx2.lineTo(Math.cos(ra)*50,Math.sin(ra)*50);cx2.strokeStyle='rgba(255,210,0,0.75)';cx2.lineWidth=4;cx2.lineCap='round';cx2.stroke();}cx2.beginPath();cx2.arc(0,0,33,0,Math.PI*2);const sg=cx2.createRadialGradient(-9,-9,4,0,0,33);sg.addColorStop(0,'#ffffa0');sg.addColorStop(0.4,'#ffe000');sg.addColorStop(1,'#ff9900');cx2.fillStyle=sg;cx2.fill();cx2.strokeStyle='#e08000';cx2.lineWidth=2;cx2.stroke();cx2.fillStyle='#804000';cx2.beginPath();cx2.ellipse(-10,-7,3.5,4.5,0,0,Math.PI*2);cx2.fill();cx2.beginPath();cx2.ellipse(10,-7,3.5,4.5,0,0,Math.PI*2);cx2.fill();cx2.fillStyle='#fff';cx2.beginPath();cx2.ellipse(-8,-8,1.8,2.2,0,0,Math.PI*2);cx2.fill();cx2.beginPath();cx2.ellipse(12,-8,1.8,2.2,0,0,Math.PI*2);cx2.fill();cx2.beginPath();cx2.arc(0,3,13,0.15,Math.PI-0.15);cx2.strokeStyle='#804000';cx2.lineWidth=3;cx2.lineCap='round';cx2.stroke();cx2.restore();dCloud(c-37,c+52,60,20,'rgba(255,255,255,0.88)');dCloud(c+27,c+60,44,16,'rgba(255,255,255,0.78)');}
+  cx2.restore();
+}
+function drawClock(){
+  if(!cv)return;
+  const sz=300,c=150;
+  const ro=147,rr=141.9,rs=128.7,rf=114.9,rn=93.9;
+  const now=new Date();const h=now.getHours(),m=now.getMinutes(),s=now.getSeconds(),ms=now.getMilliseconds();
+  const rm=h*60+m+s/60;const aS=tSO>=0?tSO:gsi(rm);const iN=tNO!==null?tNO:(h>=19||h<7);
+  cx2.clearRect(0,0,sz,sz);
+  for(let i=0;i<360;i++){const a1=(i/360)*Math.PI*2-Math.PI/2,a2=((i+1)/360)*Math.PI*2-Math.PI/2;cx2.beginPath();cx2.moveTo(c,c);cx2.arc(c,c,ro,a1,a2);cx2.fillStyle=`hsl(${i},72%,74%)`;cx2.fill();}
+  cx2.beginPath();cx2.arc(c,c,rr,0,Math.PI*2);cx2.fillStyle=iN?'#0d0535':'#b8e4ff';cx2.fill();
+  for(let i=0;i<30;i++){const a=(i/30)*Math.PI*2-Math.PI/2,sr=(rr+ro)/2;cx2.beginPath();cx2.arc(c+sr*Math.cos(a),c+sr*Math.sin(a),4,0,Math.PI*2);cx2.fillStyle=`hsl(${i*12},68%,78%)`;cx2.fill();cx2.strokeStyle='rgba(255,255,255,0.7)';cx2.lineWidth=1;cx2.stroke();}
+  cx2.beginPath();cx2.arc(c,c,rr,0,Math.PI*2);cx2.arc(c,c,rs,0,Math.PI*2,true);cx2.fillStyle=aS===3?'rgba(160,136,255,0.62)':'rgba(160,136,255,0.18)';cx2.fill();
+  const sA=[{sA:h2a(7),eA:h2a(12)},{sA:h2a(0),eA:h2a(5)},{sA:h2a(5),eA:h2a(7)}];
+  sA.forEach((sa,i)=>{const seg=SEGS[i],isA=i===aS;const midA=(sa.sA+sa.eA)/2;const ox=isA?7*Math.cos(midA):0,oy=isA?7*Math.sin(midA):0;cx2.save();cx2.translate(ox,oy);cx2.beginPath();cx2.arc(c,c,isA?rr-1:rr-3,sa.sA,sa.eA);cx2.arc(c,c,rs+1,sa.eA,sa.sA,true);cx2.closePath();cx2.fillStyle=isA?seg.col+'dd':seg.col+'55';cx2.fill();cx2.strokeStyle=isA?'rgba(255,255,255,0.9)':'rgba(255,255,255,0.4)';cx2.lineWidth=isA?2.5:1;cx2.stroke();if(isA&&tSO<0&&!ttA){const na=h2a((h%12)+(m/60));const dr=(rr+rs)/2;cx2.beginPath();cx2.arc(c+dr*Math.cos(na)+ox,c+dr*Math.sin(na)+oy,6,0,Math.PI*2);cx2.fillStyle='#fff';cx2.fill();cx2.strokeStyle=seg.col;cx2.lineWidth=2.5;cx2.stroke();}cx2.font=(isA?'15px':'12px')+' serif';cx2.textAlign='center';cx2.textBaseline='middle';const er=(rr+rs)/2;cx2.fillText(seg.emoji,c+er*Math.cos(midA)+ox,c+er*Math.sin(midA)+oy);cx2.restore();});
+  dSky(iN);
+  cx2.beginPath();cx2.arc(c,c,rf,0,Math.PI*2);cx2.fillStyle=iN?'rgba(20,10,60,0.4)':'rgba(255,245,120,0.32)';cx2.fill();cx2.strokeStyle=iN?'rgba(180,160,255,0.65)':'#ddc000';cx2.lineWidth=3.5;cx2.stroke();
+  for(let i=0;i<60;i++){const a=(i/60)*Math.PI*2-Math.PI/2,isH=i%5===0;cx2.beginPath();cx2.moveTo(c+(rf-(isH?14:7))*Math.cos(a),c+(rf-(isH?14:7))*Math.sin(a));cx2.lineTo(c+(rf-3)*Math.cos(a),c+(rf-3)*Math.sin(a));cx2.strokeStyle=iN?`rgba(210,200,255,${isH?.85:.3})`:`rgba(0,50,140,${isH?.7:.25})`;cx2.lineWidth=isH?3:1;cx2.stroke();}
+  [12,1,2,3,4,5,6,7,8,9,10,11].forEach((n,i)=>{const a=(i/12)*Math.PI*2-Math.PI/2;cx2.font='bold 15px "Fredoka One",sans-serif';cx2.fillStyle=iN?'rgba(230,220,255,0.95)':'#1a4db5';cx2.textAlign='center';cx2.textBaseline='middle';cx2.fillText(n,c+rn*Math.cos(a),c+rn*Math.sin(a));});
+  const hC=iN?'#cc88ff':'#e82020',hS=iN?'#1a7a8a':'#aa0000';
+  const hrA=h2a((h%12)+(m/60));cx2.save();cx2.translate(c,c);cx2.rotate(hrA+Math.PI/2);cx2.beginPath();cx2.moveTo(-4.5,11);cx2.bezierCurveTo(-5,4,-4,-28,-2,-44);cx2.quadraticCurveTo(0,-50,2,-44);cx2.bezierCurveTo(4,-28,5,4,4.5,11);cx2.closePath();cx2.fillStyle=hC;cx2.fill();cx2.strokeStyle=hS;cx2.lineWidth=1;cx2.stroke();cx2.restore();
+  const minA=h2a((m+s/60)/5);cx2.save();cx2.translate(c,c);cx2.rotate(minA+Math.PI/2);cx2.beginPath();cx2.moveTo(-3.5,13);cx2.bezierCurveTo(-4,4,-3,-50,-1.5,-63);cx2.quadraticCurveTo(0,-69,1.5,-63);cx2.bezierCurveTo(3,-50,4,4,3.5,13);cx2.closePath();cx2.fillStyle=hC;cx2.fill();cx2.strokeStyle=hS;cx2.lineWidth=1;cx2.stroke();cx2.restore();
+  const sF=(s+ms/1000)/60,secA=sF*Math.PI*2-Math.PI/2,sC=iN?'#ffb8d8':'#e05050';
+  cx2.save();cx2.translate(c,c);cx2.rotate(secA+Math.PI/2);cx2.beginPath();cx2.moveTo(0,18);cx2.lineTo(0,0);cx2.strokeStyle=sC;cx2.lineWidth=2;cx2.lineCap='round';cx2.stroke();cx2.beginPath();cx2.moveTo(0,0);cx2.lineTo(0,-(rf-18));cx2.strokeStyle=sC;cx2.lineWidth=1.5;cx2.lineCap='round';cx2.stroke();cx2.restore();
+  cx2.beginPath();cx2.arc(c,c,9,0,Math.PI*2);cx2.fillStyle=hC;cx2.fill();cx2.strokeStyle=hS;cx2.lineWidth=2;cx2.stroke();cx2.beginPath();cx2.arc(c,c,3.5,0,Math.PI*2);cx2.fillStyle=sC;cx2.fill();
+  const seg=SEGS[aS];let sd,el;if(seg.id==='night'){sd=12*60;const r=rm%1440;el=r>=1140?(r-1140):(r+(24*60-1140));}else{sd=seg.realEnd-seg.realStart;el=Math.max(0,rm-seg.realStart);}
+  const pct=Math.max(0.015,Math.min(1,(sd-el)/sd));const cC=seg.col==='#ffcc44'?'#9a7000':seg.col;
+  const cdn=document.getElementById('cdName');const cdt=document.getElementById('cdTime');if(cdn)cdn.textContent=seg.emoji+' '+seg.name;if(cdn)cdn.style.color=cC;
+  const fl=document.getElementById('cdFill');if(fl){fl.style.width=(pct*100)+'%';fl.style.background=seg.col;}
+  const ca=document.getElementById('cdArrow');if(ca)ca.style.borderLeftColor=seg.col;
+  const mL=Math.max(0,sd-el),hh=Math.floor(mL/60),mm2=Math.floor(mL%60);
+  if(cdt){cdt.textContent=hh>0?hh+'h '+mm2+'m':mm2+'m left';cdt.style.color=cC;}
+  const ct=document.getElementById('cdTasks');if(ct)ct.textContent=seg.tasks.join(' · ');
+  const h12=h%12===0?12:h%12,mS=String(m).padStart(2,'0'),ap=h>=12?'pm':'am';
+  const tb=document.getElementById('clockTimeBig');const ta=document.getElementById('clockAmpm');if(tb)tb.textContent=h12+':'+mS;if(ta)ta.textContent=ap;
+  const rM=rm%1440;if(rM>=420&&rM<450)document.getElementById('stripMsg').textContent='⏰ GET READY — school time! 7:00–7:30!';else document.getElementById('stripMsg').textContent=['You\'re all superstars! 🌈','Amazing family! ⭐','LEGO & rainbows! 🌈🧱','Keep shining! 🚀'][Math.floor(Date.now()/60000)%4];
+  if(tSO<0)apTh(seg.id);
+  if(tSO<0&&!ttA){if(aS!==lSI){iC(seg.id);if(lSI>=0)sAnn(aS);lSI=aS;}if(m===0&&h!==lHr&&s<9){lHr=h;sCk(h);}}
+  rTE();uRB();
+}
+function gST(){if(ttA)return 420+((Date.now()-ttS)/1000);const n=new Date();return n.getHours()*60+n.getMinutes()+n.getSeconds()/60;}
+function uRB(){
+  const now=new Date();
+  const aM=now.getHours()*60+now.getMinutes()+now.getSeconds()/60;
+  const sim=gST();
+  const sM=sim%1440;
+  const isMorn=(sM>=420&&sM<720)||tSO===0||ttA;
+  const cM=ttA?sM:aM;
+
+  const wrap=document.getElementById('readyCountdownWrap');
+  const segWrap=document.getElementById('cdSegWrap');
+
+  // Which kids have ready times enabled
+  const activeKids=Object.keys(KIDS).filter(k=>{
+    const r=rt[k];
+    return r&&r.enabled&&r.time;
+  });
+
+  if(!activeKids.length||!isMorn){
+    if(wrap){wrap.style.display='none';wrap._kidCount=0;}
+    if(segWrap)segWrap.style.display='';
+    return;
+  }
+
+  // Show countdown panel, hide segment bar
+  if(wrap)wrap.style.display='block';
+  if(segWrap)segWrap.style.display='none';
+
+  // Rebuild rows if kid count changed
+  if(!wrap._kidCount||wrap._kidCount!==activeKids.length){
+    wrap._kidCount=activeKids.length;
+    wrap.innerHTML='<div class="ready-clock-wrap" id="rclk-inner">'+
+      activeKids.map(k=>`
+        <div class="ready-clock-row" id="rclk-row-${k}">
+          <div class="ready-clock-emoji">${KIDS[k].emoji}</div>
+          <div class="ready-clock-name">${KIDS[k].name}</div>
+          <div class="ready-clock-bar-wrap">
+            <div class="ready-clock-track"><div class="ready-clock-fill" id="rclk-fill-${k}"></div></div>
+          </div>
+          <div class="ready-clock-time" id="rclk-time-${k}">--</div>
+        </div>`).join('')+
+      '</div>';
+  }
+
+  activeKids.forEach(k=>{
+    const r=rt[k];
+    const[rh,rm]=r.time.split(':').map(Number);
+    const readyMin=rh*60+rm;
+    const startMin=420; // 7am
+    const totalDur=readyMin-startMin;
+    if(totalDur<=0)return;
+    const elapsed=cM-startMin;
+    const left=Math.max(0,readyMin-cM);
+    const pct=Math.min(1,Math.max(0,elapsed/totalDur));
+    const col=pct<0.6?'#3dba6a':pct<0.82?'#ffb84d':'#ff5555';
+
+    const fill=document.getElementById('rclk-fill-'+k);
+    const timeEl=document.getElementById('rclk-time-'+k);
+    const row=document.getElementById('rclk-row-'+k);
+    if(!fill||!timeEl)return;
+
+    fill.style.width=(pct*100)+'%';
+    fill.style.background=col;
+
+    if(left<=0){
+      timeEl.textContent='Done! ⏰';
+      timeEl.style.color='#ff8888';
+      // Fire siren once per session per kid
+      const todayKey=new Date().toISOString().split('T')[0];
+      const sirenKey='siren_'+k+'_'+todayKey;
+      if(!siredKids[sirenKey]){
+        siredKids[sirenKey]=true;
+        // Collect all kids that just finished at the same time
+        const allDone=activeKids.filter(ak=>{
+          const ar=rt[ak];if(!ar||!ar.time)return false;
+          const[arh,arm]=ar.time.split(':').map(Number);
+          return (arh*60+arm)-cM<=0;
+        });
+        triggerSiren(allDone);
+      }
+    } else if(left<1){
+      timeEl.textContent=Math.floor(left*60)+'s';
+      timeEl.style.color='#ff5555';
+    } else if(left<5){
+      timeEl.textContent=Math.floor(left)+'m '+Math.floor((left%1)*60)+'s';
+      timeEl.style.color='#ff5555';
+    } else if(left<60){
+      timeEl.textContent=Math.floor(left)+'m';
+      timeEl.style.color=col;
+    } else {
+      const lh=Math.floor(left/60),lm2=Math.floor(left%60);
+      timeEl.textContent=(lh>0?lh+'h ':'')+lm2+'m';
+      timeEl.style.color=col;
+    }
+    if(row){
+      if(pct>0.85)row.classList.add('ready-urgent');
+      else row.classList.remove('ready-urgent');
+    }
+  });
+}
+
+function tTimers(){
+  const b=document.getElementById('ttBtn');
+  if(ttA){
+    // Stop test — restore real ready times
+    ttA=false;b.textContent='⏱ Ready';b.classList.remove('active-test');
+    Object.keys(KIDS).forEach(k=>{ if(rt[k]&&rt[k]._testBak){rt[k].time=rt[k]._testBak;delete rt[k]._testBak;} });
+    const si=gsi(new Date().getHours()*60+new Date().getMinutes());
+    iC(SEGS[si].id);
+    // Reset siren tracking so it can fire again next real morning
+    siredKids={};
+  } else {
+    ttA=true;ttS=Date.now();b.textContent='⏹ Stop';b.classList.add('active-test');
+    // Override ready times to 7:30am for all enabled kids so bars are meaningful
+    // Save originals first
+    Object.keys(KIDS).forEach(k=>{
+      if(!rt[k]) rt[k]={enabled:true,time:'07:30'};
+      rt[k]._testBak = rt[k].time;
+      rt[k].enabled = true;
+      rt[k].time = '07:30'; // 30 mins from 7am start = bar fills in 30 sim-seconds
+    });
+    // Reset siren so it fires during test
+    siredKids={};
+    iC('morning');
+    // Auto-stop after 35 seconds (bar will fill and siren should fire)
+    setTimeout(()=>{
+      if(ttA){
+        ttA=false;b.textContent='⏱ Ready';b.classList.remove('active-test');
+        Object.keys(KIDS).forEach(k=>{ if(rt[k]&&rt[k]._testBak){rt[k].time=rt[k]._testBak;delete rt[k]._testBak;} });
+        const si=gsi(new Date().getHours()*60+new Date().getMinutes());
+        iC(SEGS[si].id);
+      }
+    },40000);
+  }
+}
+function bT(){const bar=document.getElementById('tabBar');bar.innerHTML='';const now=new Date(),td=now.getDay();for(let d=0;d<7;d++){const isT=d===td,dt=new Date(now);dt.setDate(now.getDate()-(td-d));const t=document.createElement('div');t.className='day-tab'+(isT?' active':'');t.style.background=isT?DT[d].ac+'44':'';t.style.borderColor=isT?DT[d].ac+'aa':'';t.innerHTML=`<span class="ds">${DT[d].s}</span><span class="dn">${dt.getDate()}</span>`;bar.appendChild(t);}}
+function iC(segId){Object.keys(KIDS).forEach(k=>{
+  const ul=document.getElementById('chores-'+k);if(!ul)return;
+  const segLbl=document.getElementById('lbl-'+k);
+
+  // Check if kid is away today
+  if(isKidAway(k)){
+    const awEv=getAwayEvent(k);
+    const awLabel=awEv?awEv.title:"Dad's weekend";
+    ul.innerHTML='';
+    if(segLbl)segLbl.textContent='';
+    // Replace chore list with away sign
+    const awayDiv=document.createElement('div');
+    awayDiv.className='away-sign';
+    awayDiv.innerHTML=`
+      <div class="away-door-hanger">
+        <div class="away-hanger-hole"></div>
+        <div class="away-title">🏠 Away!</div>
+        <div class="away-sub">${awLabel}</div>
+      </div>
+      <div style="font-size:11px;font-weight:800;color:var(--sub);text-align:center">Back soon! 👋</div>`;
+    // Remove old away sign if present
+    const old=ul.parentElement.querySelector('.away-sign');
+    if(old)old.remove();
+    ul.parentElement.insertBefore(awayDiv, ul);
+    return;
+  }
+
+  // Not away — normal chores
+  // Remove away sign if present
+  const awOld=ul.parentElement.querySelector('.away-sign');
+  if(awOld)awOld.remove();
+
+  ul.innerHTML='';
+  if(segLbl)segLbl.textContent=SL[segId]+' CHORES';
+  gkc(k,segId).forEach((c,i)=>{
+    const key=k+'-'+segId+'-'+i,dn=cd[key]||false;
+    const li=document.createElement('li');li.className='chore-item'+(dn?' done':'');
+    li.innerHTML=`<span class="chore-text">${c}</span><div class="chore-check">${dn?'✓':''}</div>`;
+    li.onclick=()=>{cd[key]=!cd[key];if(cd[key])coins[k]=(coins[k]||0)+1;sv();iC(segId);uCo();};
+    ul.appendChild(li);
+  });
+});}
+function bCE(){const p=document.getElementById('choreEditorPanel');p.innerHTML='';Object.keys(KIDS).forEach(kid=>{const kd=document.createElement('div');kd.className='chore-editor-kid';kd.innerHTML=`<div class="chore-editor-kid-name">${KIDS[kid].emoji} ${KIDS[kid].name}</div>`;['morning','afternoon','evening','night'].forEach(segId=>{const seg=SEGS.find(s=>s.id===segId);const acc=document.createElement('div');acc.className='seg-accordion';const hdr=document.createElement('div');hdr.className='seg-accordion-header';hdr.style.background=SC[segId];hdr.innerHTML=`<span>${seg.emoji} ${seg.name}</span><span class="chevron">▼</span>`;hdr.onclick=()=>{hdr.classList.toggle('open');bdy.classList.toggle('open');};const bdy=document.createElement('div');bdy.className='seg-accordion-body';
+        let dayType='all'; // 'all', 'weekday', 'weekend'
+        const getListKey=()=>dayType==='all'?segId:segId+'_'+dayType;
+        const getChoreSrc=()=>{const k=getListKey();return(cc[kid]&&cc[kid][k]&&cc[kid][k].length)?cc[kid][k]:(dayType==='all'?DC[kid][segId]:[]);};
+        const rR=()=>{
+          bdy.innerHTML='';
+          // Day type selector
+          const tabs=document.createElement('div');
+          tabs.style.cssText='display:flex;gap:4px;margin-bottom:7px';
+          ['all','weekday','weekend'].forEach(dt=>{
+            const tb=document.createElement('button');
+            const labels={all:'📅 All Days',weekday:'Mon–Fri',weekend:'Sat–Sun'};
+            tb.textContent=labels[dt];
+            tb.style.cssText=`flex:1;border:none;border-radius:7px;padding:4px 6px;font-family:'Fredoka One',sans-serif;font-size:11px;cursor:pointer;background:${dayType===dt?'#38b6c8':'rgba(56,182,200,0.12)'};color:${dayType===dt?'#fff':'var(--text)'}`;
+            tb.onclick=()=>{dayType=dt;rR();};
+            tabs.appendChild(tb);
+          });
+          bdy.appendChild(tabs);
+          // Chore rows
+          getChoreSrc().forEach((c,i)=>{
+            const row=document.createElement('div');row.className='chore-edit-row';
+            const inp=document.createElement('input');inp.className='chore-edit-input';inp.type='text';inp.value=c;
+            inp.onchange=()=>{const lk=getListKey();if(!cc[kid])cc[kid]={};if(!cc[kid][lk])cc[kid][lk]=[...getChoreSrc()];cc[kid][lk][i]=inp.value.trim()||c;sv();const si=gsi(new Date().getHours()*60+new Date().getMinutes());if(SEGS[si].id===segId)iC(segId);};
+            const dl=document.createElement('button');dl.className='chore-edit-del';dl.textContent='✕';
+            dl.onclick=()=>{const lk=getListKey();if(!cc[kid])cc[kid]={};if(!cc[kid][lk])cc[kid][lk]=[...getChoreSrc()];cc[kid][lk].splice(i,1);Object.keys(cd).forEach(ck=>{if(ck.startsWith(kid+'-'+segId+'-'))delete cd[ck];});sv();rR();const si=gsi(new Date().getHours()*60+new Date().getMinutes());if(SEGS[si].id===segId)iC(segId);};
+            row.appendChild(inp);row.appendChild(dl);bdy.appendChild(row);
+          });
+          const aR=document.createElement('div');aR.className='add-chore-row';
+          const aI=document.createElement('input');aI.className='add-chore-input';aI.type='text';aI.placeholder='Add a chore...';
+          const aB=document.createElement('button');aB.className='add-chore-btn';aB.textContent='+ Add';
+          aB.onclick=()=>{const v=aI.value.trim();if(!v)return;const lk=getListKey();if(!cc[kid])cc[kid]={};if(!cc[kid][lk])cc[kid][lk]=[...getChoreSrc()];cc[kid][lk].push(v);aI.value='';sv();rR();const si=gsi(new Date().getHours()*60+new Date().getMinutes());if(SEGS[si].id===segId)iC(segId);};
+          aI.onkeydown=e=>{if(e.key==='Enter')aB.onclick();};
+          aR.appendChild(aI);aR.appendChild(aB);bdy.appendChild(aR);
+        };rR();acc.appendChild(hdr);acc.appendChild(bdy);kd.appendChild(acc);});p.appendChild(kd);});}
+function uCo(){Object.keys(coins).forEach(k=>{const e=document.getElementById('coins-'+k);if(e)e.textContent=coins[k]||0;});}
+function addCoin(k){coins[k]=(coins[k]||0)+1;sv();uCo();const e=document.getElementById('coins-'+k);if(e){e.style.transform='scale(1.5)';setTimeout(()=>e.style.transform='',250);}}
+function openReward(k){rwK=k;document.getElementById('rwTitle').textContent=KIDS[k].emoji+' '+KIDS[k].name+' — Coins';document.getElementById('rwCoins').textContent='🪙 '+(coins[k]||0);document.getElementById('rewardOv').classList.add('open');}
+function closeReward(){document.getElementById('rewardOv').classList.remove('open');}
+function rwAdd(n){if(!rwK)return;coins[rwK]=(coins[rwK]||0)+n;sv();uCo();document.getElementById('rwCoins').textContent='🪙 '+coins[rwK];}
+function rwSpend(){if(!rwK||coins[rwK]<=0)return;coins[rwK]--;sv();uCo();document.getElementById('rwCoins').textContent='🪙 '+coins[rwK];}
+function tCuckoo(){sCk(new Date().getHours());}
+function tAlarm(){
+  // Test alarm with all kids
+  const testAlarm={time:'00:00',label:'This is a test alarm! 🚨',kids:Object.keys(KIDS),fired:{}};
+  triggerAlarm(testAlarm);
+}
+function hardRefresh(){
+  // Re-init everything from storage
+  try{const v=localStorage.getItem(EK);if(v)evs=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem('fhq9_special');if(v)spEvs=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem(CCK);if(v)cc=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem(RDK);if(v)rt=JSON.parse(v);}catch(e){}
+  try{const v=localStorage.getItem('fhq9_alarms2');if(v)alarms=JSON.parse(v);}catch(e){}
+  const si=gsi(new Date().getHours()*60+new Date().getMinutes());
+  iC(SEGS[si].id);
+  uCo();rTE();rsb();
+  applyPanelVis();
+  // Flash the button
+  const btn=event.target;const orig=btn.textContent;btn.textContent='✓ Done!';btn.style.background='rgba(52,199,89,0.3)';
+  setTimeout(()=>{btn.textContent=orig;btn.style.background='';},1200);
+}
+function tSeg(i){tSO=i;tNO=(i>=2);apTh(SEGS[i].id);sAnn(i);iC(SEGS[i].id);setTimeout(()=>{tSO=-1;tNO=null;const si=gsi(new Date().getHours()*60+new Date().getMinutes());apTh(SEGS[si].id);iC(SEGS[si].id);},15000);}
+function oSP(){const seg=SEGS[pSI];const el=document.getElementById('segPopEl');el.style.background=seg.col+'22';el.style.borderColor=seg.col+'66';document.getElementById('spTitleEl').textContent=seg.emoji+' '+seg.name;document.getElementById('spTitleEl').style.color=seg.col;const f=hh=>{const h12=hh%12===0?12:hh%12;return h12+(hh>=12?'pm':'am');};document.getElementById('spTimeEl').textContent=f(seg.startRH)+' – '+f(seg.endRH%24);document.getElementById('spTimeEl').style.color='rgba(255,255,255,0.7)';document.getElementById('spTasks').innerHTML=seg.tasks.map(t=>`<div class="sp-task">${t}</div>`).join('');uSPT();document.getElementById('segOv').classList.add('open');}
+function uSPT(){if(pSI<0)return;const seg=SEGS[pSI];const now=new Date(),tot=now.getHours()*60+now.getMinutes()+now.getSeconds()/60;let mL;if(seg.id==='night'){const r=tot%1440;mL=12*60-(r>=1140?(r-1140):(r+(24*60-1140)));}else mL=seg.realEnd-tot;if(mL>0){const hx=Math.floor(mL/60),mx=Math.floor(mL%60);document.getElementById('spCd').textContent=(hx>0?hx+'h ':'')+mx+'m left';}else document.getElementById('spCd').textContent='Time\'s up! ⏰';document.getElementById('spCd').style.color=SEGS[pSI].col;}
+function closeSegPop(){document.getElementById('segOv').classList.remove('open');pSI=-1;}
+function sAnn(i){const seg=SEGS[i],ann=seg.ann;document.getElementById('annBg').style.background=ann.bg;document.getElementById('annIcon').textContent=ann.icon;document.getElementById('annTitle').textContent=seg.name+'!';document.getElementById('annSub').textContent=ann.msgs[Math.floor(Math.random()*ann.msgs.length)];document.getElementById('annOv').classList.add('open');setTimeout(closeAnn,8000);}
+function closeAnn(){document.getElementById('annOv').classList.remove('open');}
+function sCk(hour){const h12=hour%12===0?12:hour%12,ap=hour>=12?'pm':'am';document.getElementById('cuckooTime').textContent=h12+':00 '+ap;document.getElementById('cuckooCues').textContent=['🐣 Tweet! Tweet!','🐥 Cheep cheep cheep!','🐣 Tweet tweet!','🐥 Good '+ap+'!'][Math.floor(Math.random()*4)];document.getElementById('cuckooOv').classList.add('open');setTimeout(closeCuckoo,8000);}
+function closeCuckoo(){document.getElementById('cuckooOv').classList.remove('open');}
+function refreshFeed(){try{const v=localStorage.getItem(EK);if(v)evs=JSON.parse(v);}catch(e){}try{const v=localStorage.getItem('fhq9_special');if(v)spEvs=JSON.parse(v);}catch(e){}rTE();rsb();const b=document.getElementById('refreshBtn');b.classList.add('spinning');setTimeout(()=>b.classList.remove('spinning'),500);}
+function rTE(){
+  const ds=tds();const el=document.getElementById('todayEvList');const ev=gEFD(ds);
+  if(!ev.length){el.innerHTML='<div class="no-ev">Nothing on today — enjoy! 🌟</div>';return;}
+  el.style.flexDirection='column';
+  const whoLabel={family:'🏠 Family',lexie:'🌸 Lexie',mel:'🌻 Mel',ben:'🚀 Ben',nate:'⚡ Nate'};
+  el.innerHTML=ev.map(({ev:e},i)=>{
+    const who=e.who&&e.who!=='family'?`<span style="font-size:10px;font-weight:900;background:rgba(255,255,255,0.18);border-radius:5px;padding:1px 6px;margin-left:4px">${whoLabel[e.who]||e.who}</span>`:'';
+    return `<div class="ev-chip"><div class="ev-dot" style="background:${EC[i%EC.length]}"></div><div class="ev-n">${e.title}${who}</div><div class="ev-t">${e.time||'All day'}</div></div>`;
+  }).join('');
+}
+function uDt(){const d=new Date(),mo=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];const dl=document.getElementById('dateLine');if(dl)dl.textContent=DN[d.getDay()]+', '+d.getDate()+' '+mo[d.getMonth()]+' '+d.getFullYear();}
+function rSEL(){
+  const cont=document.getElementById('specialEvList');
+  if(!spEvs.length){cont.innerHTML='<div style="font-size:12px;font-weight:700;color:var(--sub);padding:4px 0 8px">No special events yet.</div>';return;}
+  const typeLabel={event:'🎉 Event',holiday:'🏖 Holiday','away-mel':'🌻 Mel Away','away-ben':'🚀 Ben Away','away-both':'👨‍👧‍👦 Both Away'};
+  cont.innerHTML=spEvs.map((s,i)=>{
+    const tl=typeLabel[s.type||'event']||'🎉 Event';
+    const dot=s.type&&s.type.startsWith('away')?'#ff9500':s.color;
+    return `<div class="special-ev-row">
+      <div class="special-ev-dot" style="background:${dot}"></div>
+      <div class="special-ev-info">
+        <div class="special-ev-name">${s.emoji||'🎉'} ${s.title} <span style="font-size:10px;font-weight:800;background:rgba(56,182,200,0.15);color:var(--sub);border-radius:5px;padding:1px 5px">${tl}</span></div>
+        <div class="special-ev-dates">${s.start===s.end?s.start:s.start+' → '+s.end}</div>
+      </div>
+      <button class="special-ev-del" onclick="dSp(${i})">✕</button>
+    </div>`;
+  }).join('');
+}
+function bSCR(){const row=document.getElementById('spColorRow');row.innerHTML='';SPC.forEach(c=>{const b=document.createElement('button');b.className='type-btn'+(c===spCol?' sel':'');b.style.background=c;b.onclick=()=>{spCol=c;bSCR();};row.appendChild(b);});}
+function saveSp(){
+  const t=document.getElementById('spTitle').value.trim();if(!t)return;
+  const st=document.getElementById('spStart').value;
+  const en=document.getElementById('spEnd').value||st;if(!st)return;
+  const type=currentSpType||'event';
+  const emoji=document.getElementById('spEmoji').value||(type==='holiday'?'🏖':type.startsWith('away')?'🏠':'🎉');
+  const col=type.startsWith('away')?'#ff9500':type==='holiday'?'#4fc3f7':spC;
+  spEvs.push({title:t,emoji,start:st,end:en,color:col,type});
+  sv();rSEL();rsb();clearSp();rCal();
+}
+
+function clearSp(){document.getElementById('spTitle').value='';document.getElementById('spEmoji').value='';document.getElementById('spStart').value='';document.getElementById('spEnd').value='';selSpType('event');}
+function dSp(i){spEvs.splice(i,1);sv();rSEL();rsb();rCal();}
+function gEFD(ds){const d=new Date(ds+'T12:00:00');const res=[];evs.forEach((ev,idx)=>{if(ev.exceptions&&ev.exceptions.includes(ds))return;if(!ev.repeat||ev.repeat==='none'){if(ev.date===ds)res.push({ev,idx,isRecurring:false});}else{const st=new Date(ev.date+'T12:00:00');if(d<st)return;let m=false;if(ev.repeat==='weekly'&&d.getDay()===st.getDay())m=true;else if(ev.repeat==='fortnightly'){const df=Math.round((d-st)/864e5);if(df>=0&&df%14===0)m=true;}else if(ev.repeat==='monthly'&&d.getDate()===st.getDate())m=true;if(m)res.push({ev,idx,isRecurring:true,onDate:ds});}});return res.sort((a,b)=>a.ev.time>b.ev.time?1:-1);}
+function hEv(ds){return gEFD(ds).length>0;}
+function shC(t,msg,btns){document.getElementById('confirmTitle').textContent=t;document.getElementById('confirmMsg').textContent=msg;document.getElementById('confirmBtns').innerHTML=btns;document.getElementById('confirmOv').classList.add('open');}
+function closeConfirm(){document.getElementById('confirmOv').classList.remove('open');}
+function delEvent(idx,isR,od){if(!evs[idx])return;const ev=evs[idx];if(isR){shC('Delete "'+ev.title+'"?','This repeats. Remove just '+od+', or whole series?',`<button class="cbtn cbtn-cancel" onclick="closeConfirm()">Cancel</button><button class="cbtn cbtn-del" style="font-size:12px" onclick="dOcc(${idx},'${od}')">Just ${od}</button><button class="cbtn cbtn-del" onclick="dSer(${idx})">All dates</button>`);}else{shC('Delete "'+ev.title+'"?','Remove permanently.',`<button class="cbtn cbtn-cancel" onclick="closeConfirm()">Cancel</button><button class="cbtn cbtn-del" onclick="dSer(${idx})">Yes, delete it</button>`);}}
+function dOcc(idx,date){closeConfirm();if(!evs[idx])return;if(!evs[idx].exceptions)evs[idx].exceptions=[];evs[idx].exceptions.push(date);sv();rCal();rEL();}
+function dSer(idx){closeConfirm();if(evs[idx])evs.splice(idx,1);sv();rCal();rEL();}
+function bPK(){const g=document.getElementById('pinGrid');g.innerHTML='';[1,2,3,4,5,6,7,8,9,'',0,'⌫'].forEach(k=>{const b=document.createElement('div');b.className='pin-key';b.textContent=k;b.style.visibility=k===''?'hidden':'visible';b.onclick=()=>{if(k==='⌫')pBuf=pBuf.slice(0,-1);else if(pBuf.length<4)pBuf+=k;uPD();if(pBuf.length===4)chkPin();};g.appendChild(b);});}
+function uPD(){for(let i=0;i<4;i++)document.getElementById('pd'+i).classList.toggle('filled',i<pBuf.length);}
+function startPin(t='settings'){pTarget=t;pBuf='';uPD();document.getElementById('pinErr').textContent='';document.getElementById('pinOv').classList.add('open');}
+function closePin(){document.getElementById('pinOv').classList.remove('open');pBuf='';}
+function chkPin(){if(pBuf===pin){document.getElementById('pinOv').classList.remove('open');pBuf='';if(pTarget==='rules')oPO('rules');else oPO('cal');}else{document.getElementById('pinErr').textContent='Wrong PIN — try again!';pBuf='';uPD();}}
+function oPO(tab='cal'){selD=tds();rCal();rEL();bRTP();bCE();bSCR();rSEL();bre();buildPanelToggleList();buildCoinManager();buildAlarmEditor();switchPTab(tab);document.getElementById('parentOv').classList.add('open');}
+function closeParentOv(){document.getElementById('parentOv').classList.remove('open');refreshFeed();}
+function switchPTab(tab){['cal','special','rules','chores','ready','panels','coins','alarms'].forEach(t=>{const pId='panel'+t.charAt(0).toUpperCase()+t.slice(1);const p=document.getElementById(pId);if(p)p.style.display=t===tab?'block':'none';document.getElementById('ptab-'+t).classList.toggle('active',t===tab);});}
+function bRTP(){const p=document.getElementById('readyTimesPanel');p.innerHTML='';Object.keys(KIDS).forEach(k=>{const r=rt[k]||{enabled:true,time:'07:30'};const d=document.createElement('div');d.className='kid-ready-row';d.innerHTML=`<div class="kid-ready-name">${KIDS[k].emoji} ${KIDS[k].name}</div><div class="ready-time-row"><label>Ready by</label><input type="time" id="rt-time-${k}" value="${r.time||'07:30'}"></div><div class="ready-time-row"><label>Show countdown</label><input type="checkbox" id="rt-en-${k}" ${r.enabled?'checked':''}></div>`;p.appendChild(d);});}
+function saveReadyTimes(){Object.keys(KIDS).forEach(k=>{rt[k]={enabled:document.getElementById('rt-en-'+k).checked,time:document.getElementById('rt-time-'+k).value};});sv();const b=event.target;b.textContent='Saved! ✅';setTimeout(()=>{b.textContent='Save Ready Times 🎉';},2000);}
+function changeMonth(d){calM+=d;if(calM>11){calM=0;calY++;}if(calM<0){calM=11;calY--;}rCal();rEL();}
+function rCal(){const mo=['January','February','March','April','May','June','July','August','September','October','November','December'];document.getElementById('calTitle').textContent=mo[calM]+' '+calY;const g=document.getElementById('calGrid');g.innerHTML='';const fi=new Date(calY,calM,1).getDay(),di=new Date(calY,calM+1,0).getDate(),pr=new Date(calY,calM,0).getDate();const td=new Date();for(let i=0;i<42;i++){const cell=document.createElement('div');cell.className='cal-d';let day,m2=calM,yr=calY,oth=false;if(i<fi){day=pr-(fi-1-i);m2=calM-1;if(m2<0){m2=11;yr--;}oth=true;}else if(i>=fi+di){day=i-fi-di+1;m2=calM+1;if(m2>11){m2=0;yr++;}oth=true;}else day=i-fi+1;if(oth)cell.classList.add('other');const ds=`${yr}-${String(m2+1).padStart(2,'0')}-${String(day).padStart(2,'0')}`;if(!oth&&day===td.getDate()&&calM===td.getMonth()&&calY===td.getFullYear())cell.classList.add('today');if(hEv(ds))cell.classList.add('has-ev');if(ds===selD)cell.classList.add('sel');const sa=gas(ds);if(sa.length){cell.classList.add('special-day');const stripe=document.createElement('div');stripe.className='sp-stripe';stripe.style.background=sa[0].color;cell.appendChild(stripe);}const ns=document.createElement('span');ns.textContent=day;cell.insertBefore(ns,cell.firstChild);cell.onclick=()=>{selD=ds;rCal();rEL();document.getElementById('evDate').value=ds;};g.appendChild(cell);}}
+function rEL(){const ds=selD||tds();const d=new Date(ds+'T12:00:00');document.getElementById('evListTitle').textContent='Events — '+DN[d.getDay()]+' '+d.getDate();const c=document.getElementById('evListItems');const sa=gas(ds);const sh=sa.map(s=>`<div class="ev-row"><div class="ev-row-dot" style="background:${s.color}"></div><div style="flex:1"><div class="ev-row-name">${s.emoji} ${s.title}</div><div class="ev-row-meta">${s.start===s.end?s.start:s.start+' to '+s.end} · Special Event</div></div></div>`).join('');const ev=gEFD(ds);if(!ev.length&&!sa.length){c.innerHTML='<div style="font-size:11px;font-weight:800;color:var(--sub);padding:3px 7px">No events</div>';return;}c.innerHTML=sh+ev.map(({ev,idx,isRecurring,onDate},i)=>{const rb=isRecurring?`<span class="ev-row-rec">${ev.repeat}</span>`:'';const dc=isRecurring?`delEvent(${idx},true,'${onDate||ds}')`:`delEvent(${idx},false,'${ds}')`;return`<div class="ev-row"><div class="ev-row-dot" style="background:${EC[i%EC.length]}"></div><div style="flex:1"><div class="ev-row-name">${ev.title||'(no title)'} ${rb}</div><div class="ev-row-meta">${ev.time||'All day'} · ${ev.who||'family'}</div></div><button class="ev-del" onclick="${dc}">✕ Delete</button></div>`;}).join('');}
+function saveEv(){const t=document.getElementById('evTitle').value.trim();if(!t)return;evs.push({title:t,date:document.getElementById('evDate').value,time:document.getElementById('evTime').value,who:document.getElementById('evWho').value,repeat:document.getElementById('evRepeat').value,notes:document.getElementById('evNotes').value});sv();rCal();rEL();clearEv();rTE();}
+function clearEv(){['evTitle','evNotes','evTime'].forEach(id=>document.getElementById(id).value='');document.getElementById('evRepeat').value='none';}
+
+
+// ── COIN MANAGER ──
+function buildCoinManager(){
+  const cont=document.getElementById('coinManagerList');
+  if(!cont)return;
+  cont.innerHTML='';
+  Object.keys(KIDS).forEach(k=>{
+    const kid=KIDS[k];
+    const div=document.createElement('div');
+    div.style.cssText='background:rgba(56,182,200,0.1);border-radius:14px;padding:12px 14px;margin-bottom:10px;border:1.5px solid rgba(56,182,200,0.2)';
+    div.innerHTML=`
+      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:10px">
+        <span style="font-family:'Fredoka One',sans-serif;font-size:17px;color:var(--text)">${kid.emoji} ${kid.name}</span>
+        <span style="font-family:'Fredoka One',sans-serif;font-size:26px;color:#ffd700" id="cm-total-${k}">🪙 ${coins[k]||0}</span>
+      </div>
+      <div style="display:flex;gap:6px;flex-wrap:wrap">
+        <button class="cm-btn" style="background:#3dba6a" onclick="cmAdd('${k}',1)">+1</button>
+        <button class="cm-btn" style="background:#5bc8ff" onclick="cmAdd('${k}',5)">+5</button>
+        <button class="cm-btn" style="background:#38b6c8" onclick="cmAdd('${k}',10)">+10</button>
+        <button class="cm-btn" style="background:#ff8fbe" onclick="cmSpend('${k}',1)">−1</button>
+        <button class="cm-btn" style="background:#ffb84d" onclick="cmSpend('${k}',5)">−5</button>
+        <button class="cm-btn" style="background:#ff5555" onclick="cmSet('${k}',0)">Reset</button>
+      </div>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:10px">
+        <input type="number" id="cm-input-${k}" min="0" placeholder="Set exact amount" style="flex:1;background:rgba(56,182,200,0.1);border:2px solid rgba(56,182,200,0.3);border-radius:8px;padding:5px 9px;font-family:'Nunito',sans-serif;font-size:13px;color:var(--text)">
+        <button class="btn-save" style="flex:0;padding:6px 14px;white-space:nowrap" onclick="cmSetExact('${k}')">Set</button>
+      </div>`;
+    cont.appendChild(div);
+  });
+}
+function cmRefresh(k){
+  const el=document.getElementById('cm-total-'+k);
+  if(el)el.textContent='🪙 '+(coins[k]||0);
+  uCo();
+}
+function cmAdd(k,n){coins[k]=(coins[k]||0)+n;sv();cmRefresh(k);}
+function cmSpend(k,n){coins[k]=Math.max(0,(coins[k]||0)-n);sv();cmRefresh(k);}
+function cmSet(k,n){coins[k]=n;sv();cmRefresh(k);}
+function cmSetExact(k){
+  const inp=document.getElementById('cm-input-'+k);
+  const v=parseInt(inp.value);
+  if(!isNaN(v)&&v>=0){coins[k]=v;sv();cmRefresh(k);inp.value='';}
+}
+
+
+
+// ── READY SIREN ──
+let sirenInterval = null;
+let siredKids = {}; // track which kids have already triggered siren today
+
+function triggerSiren(firedKids){
+  const ov = document.getElementById('sirenOv');
+  const kidsDiv = document.getElementById('sirenKids');
+  kidsDiv.innerHTML = firedKids.map(k =>
+    `<div class="siren-kid-chip">${KIDS[k].emoji} ${KIDS[k].name}</div>`
+  ).join('');
+  ov.classList.add('open');
+  // Activate spinning beacon beams and flashing dome
+  const dome = document.querySelector('.siren-beacon-dome');
+  const beam1 = document.getElementById('sirenBeam');
+  const beam2 = document.getElementById('sirenBeam2');
+  if(dome) dome.classList.add('flashing');
+  if(beam1) beam1.classList.add('active');
+  if(beam2) beam2.classList.add('active');
+  playSirenSound();
+}
+
+function dismissSiren(){
+  const ov = document.getElementById('sirenOv');
+  ov.classList.remove('open');
+  if(sirenInterval){ clearInterval(sirenInterval); sirenInterval=null; }
+  const dome = document.querySelector('.siren-beacon-dome');
+  const beam1 = document.getElementById('sirenBeam');
+  const beam2 = document.getElementById('sirenBeam2');
+  if(dome) dome.classList.remove('flashing');
+  if(beam1) beam1.classList.remove('active');
+  if(beam2) beam2.classList.remove('active');
+}
+
+function playSirenSound(){
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    const vol = alertVolume * 0.7;
+    const now = ctx.currentTime;
+    const cycleLen = 6.0, riseT = 2.8, holdT = 0.4, fallT = 2.0;
+
+    // Two detuned oscillators for thick siren texture
+    [0, 0.015].forEach(detune => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.type = 'sawtooth';
+      const lowF = 200 + detune * 400, highF = 900 + detune * 400;
+
+      for(let cycle = 0; cycle < 2; cycle++){
+        const base = now + cycle * cycleLen;
+        // Rise: slow wail from low to high
+        osc.frequency.setValueAtTime(lowF, base);
+        osc.frequency.linearRampToValueAtTime(highF, base + riseT);
+        // Hold at peak
+        osc.frequency.setValueAtTime(highF, base + riseT + holdT);
+        // Fall back down
+        osc.frequency.linearRampToValueAtTime(lowF, base + riseT + holdT + fallT);
+        // Gain envelope
+        gain.gain.setValueAtTime(0.0, base);
+        gain.gain.linearRampToValueAtTime(vol, base + 0.3);
+        gain.gain.setValueAtTime(vol, base + riseT + holdT + fallT - 0.2);
+        gain.gain.linearRampToValueAtTime(0.0, base + riseT + holdT + fallT + 0.2);
+        gain.gain.setValueAtTime(0.0, base + cycleLen);
+      }
+      osc.start(now); osc.stop(now + cycleLen * 2 + 0.5);
+    });
+
+    // Low rumble underneath
+    const rumble = ctx.createOscillator();
+    const rg = ctx.createGain();
+    rumble.connect(rg); rg.connect(ctx.destination);
+    rumble.type = 'sine'; rumble.frequency.value = 60;
+    rg.gain.setValueAtTime(vol * 0.25, now);
+    rg.gain.linearRampToValueAtTime(vol * 0.35, now + 1.5);
+    rg.gain.linearRampToValueAtTime(0.0, now + cycleLen * 2 + 0.5);
+    rumble.start(now); rumble.stop(now + cycleLen * 2 + 0.5);
+
+  } catch(e){ console.log('Siren audio error:', e); }
+}
+function initBannerResize(){
+  const banner = document.getElementById('topBanner');
+  const handle = document.getElementById('bannerResizeHandle');
+  if(!banner||!handle) return;
+  // Apply saved height
+  applyBannerHeight(bannerH);
+  // Mouse drag
+  handle.addEventListener('mousedown', e => {
+    e.preventDefault();
+    const startY = e.clientY;
+    const startH = banner.offsetHeight;
+    const mv = e => {
+      const newH = Math.max(38, Math.min(120, startH + (e.clientY - startY)));
+      applyBannerHeight(newH);
+    };
+    const up = () => {
+      bannerH = banner.offsetHeight;
+      localStorage.setItem('fhq9_bannerH', bannerH);
+      document.removeEventListener('mousemove', mv);
+      document.removeEventListener('mouseup', up);
+    };
+    document.addEventListener('mousemove', mv);
+    document.addEventListener('mouseup', up);
+  });
+  // Touch drag
+  handle.addEventListener('touchstart', e => {
+    const t0 = e.touches[0];
+    const startY = t0.clientY;
+    const startH = banner.offsetHeight;
+    const mv = e => {
+      const t = e.touches[0];
+      const newH = Math.max(38, Math.min(120, startH + (t.clientY - startY)));
+      applyBannerHeight(newH);
+    };
+    const up = () => {
+      bannerH = banner.offsetHeight;
+      localStorage.setItem('fhq9_bannerH', bannerH);
+      handle.removeEventListener('touchmove', mv);
+      handle.removeEventListener('touchend', up);
+    };
+    handle.addEventListener('touchmove', mv, {passive:true});
+    handle.addEventListener('touchend', up);
+  }, {passive:true});
+}
+function applyBannerHeight(h){
+  const banner = document.getElementById('topBanner');
+  if(!banner) return;
+  banner.style.minHeight = h + 'px';
+  banner.style.height = h + 'px';
+  // Scale rule text proportionally
+  const scale = Math.max(0.7, Math.min(1.8, h / 42));
+  const emoji = document.getElementById('ruleEmoji');
+  const text = document.getElementById('ruleText');
+  if(emoji) emoji.style.fontSize = Math.round(20 * scale) + 'px';
+  if(text) text.style.fontSize = Math.round(14 * scale) + 'px';
+}
+
+// ── VOLUME CONTROL ──
+let alertVolume = parseFloat(localStorage.getItem('fhq9_vol') || '0.6');
+let prevVolume = alertVolume;
+
+function setVolume(val){
+  alertVolume = val / 100;
+  localStorage.setItem('fhq9_vol', alertVolume);
+  const icon = document.getElementById('volIcon');
+  if(icon) icon.textContent = alertVolume === 0 ? '🔇' : alertVolume < 0.4 ? '🔉' : '🔊';
+}
+function toggleMute(){
+  if(alertVolume > 0){ prevVolume = alertVolume; setVolume(0); const s=document.getElementById('volSlider'); if(s)s.value=0; }
+  else { setVolume(prevVolume*100); const s=document.getElementById('volSlider'); if(s)s.value=prevVolume*100; }
+}
+function initVolume(){
+  const s = document.getElementById('volSlider');
+  if(s){ s.value = alertVolume * 100; }
+  const icon = document.getElementById('volIcon');
+  if(icon) icon.textContent = alertVolume === 0 ? '🔇' : alertVolume < 0.4 ? '🔉' : '🔊';
+}
+
+// ── ALARM SYSTEM ──
+// alarms = [{time:'07:30', label:'Wake up!', kids:['lexie','ben'], fired:{}}]
+let alarms = JSON.parse(localStorage.getItem('fhq9_alarms2') || '[]');
+let alarmInterval = null;
+let alarmSeqInterval = null;
+let alarmSeqState = 0; // which light is currently lit in sequence
+
+function saveAlarms(){ localStorage.setItem('fhq9_alarms2', JSON.stringify(alarms)); }
+
+function fmt12(t){
+  if(!t) return '';
+  const [hh,mm] = t.split(':').map(Number);
+  const ap = hh>=12?'pm':'am';
+  const h12 = hh%12===0?12:hh%12;
+  return h12+':'+String(mm).padStart(2,'0')+ap;
+}
+
+function buildAlarmEditor(){
+  const cont = document.getElementById('alarmEditorList');
+  if(!cont) return;
+  cont.innerHTML = '';
+
+  // List existing alarms
+  const listDiv = document.createElement('div');
+  if(alarms.length === 0){
+    listDiv.innerHTML = '<div style="font-size:12px;font-weight:700;color:var(--sub);padding:4px 0 10px">No alarms set yet.</div>';
+  }
+  alarms.forEach((a,i) => {
+    const kidNames = (a.kids||[]).map(k=>KIDS[k]?KIDS[k].emoji+' '+KIDS[k].name:k).join(', ');
+    const row = document.createElement('div');
+    row.className = 'alarm-row';
+    row.innerHTML = `<div class="alarm-row-info">
+      <div class="alarm-row-time">⏰ ${fmt12(a.time)}</div>
+      <div class="alarm-row-kids">${kidNames} — ${a.label||'Alarm'}</div>
+    </div>
+    <button class="alarm-del" onclick="delAlarm(${i})">✕ Delete</button>`;
+    listDiv.appendChild(row);
+  });
+  cont.appendChild(listDiv);
+
+  // Add new alarm form
+  const form = document.createElement('div');
+  form.className = 'add-alarm-form';
+  form.innerHTML = `<div class="alarm-block-title">+ New Alarm</div>
+    <input type="time" id="al-time-new" value="07:30">
+    <input type="text" id="al-label-new" placeholder="e.g. Time to get up! 🚀">
+    <div style="font-size:10px;font-weight:900;color:var(--sub);margin-bottom:5px;text-transform:uppercase;letter-spacing:0.4px">For which kids?</div>
+    <div class="kid-checkboxes">
+      ${Object.keys(KIDS).map(k=>`<label class="kid-cb-label"><input type="checkbox" id="al-cb-${k}" value="${k}"> ${KIDS[k].emoji} ${KIDS[k].name}</label>`).join('')}
+    </div>
+    <button class="btn-save" style="width:100%" onclick="addAlarm()">Add Alarm ⏰</button>`;
+  cont.appendChild(form);
+}
+
+function addAlarm(){
+  const time = document.getElementById('al-time-new').value;
+  const label = document.getElementById('al-label-new').value.trim() || 'Alarm!';
+  const kids = Object.keys(KIDS).filter(k => document.getElementById('al-cb-'+k)?.checked);
+  if(!time || kids.length === 0){ alert('Please set a time and select at least one child.'); return; }
+  alarms.push({time, label, kids, fired:{}});
+  alarms.sort((a,b) => a.time > b.time ? 1:-1);
+  saveAlarms();
+  buildAlarmEditor();
+}
+
+function delAlarm(idx){
+  alarms.splice(idx, 1);
+  saveAlarms();
+  buildAlarmEditor();
+}
+
+function checkAlarms(){
+  const now = new Date();
+  const hh = String(now.getHours()).padStart(2,'0');
+  const mm = String(now.getMinutes()).padStart(2,'0');
+  const nowStr = hh+':'+mm;
+  const todayKey = now.toISOString().split('T')[0];
+  alarms.forEach((a,i) => {
+    if(a.time === nowStr && !(a.fired && a.fired[todayKey])){
+      alarms[i].fired = alarms[i].fired || {};
+      alarms[i].fired[todayKey] = true;
+      saveAlarms();
+      triggerAlarm(a);
+    }
+  });
+}
+
+function triggerAlarm(alarm){
+  const ov = document.getElementById('alarmOv');
+  // Set kids row
+  const kidsRow = document.getElementById('alarmKidsRow');
+  kidsRow.innerHTML = (alarm.kids||[]).map(k=>
+    `<div class="alarm-kid-chip">${KIDS[k]?KIDS[k].emoji+' '+KIDS[k].name:k}</div>`
+  ).join('');
+  document.getElementById('alarmMsg').textContent = alarm.label || 'Alarm!';
+  // Reset all lights off
+  ['red','yellow','green'].forEach(col => document.getElementById('tl-'+col).classList.remove('on'));
+  ov.classList.add('open');
+  // Start traffic light sequence: red → yellow → green, cycling
+  alarmSeqState = 0;
+  const seq = ['red','yellow','green'];
+  if(alarmSeqInterval) clearInterval(alarmSeqInterval);
+  // Light up one at a time in sequence
+  function stepLight(){
+    seq.forEach(col => document.getElementById('tl-'+col).classList.remove('on'));
+    document.getElementById('tl-'+seq[alarmSeqState]).classList.add('on');
+    alarmSeqState = (alarmSeqState + 1) % seq.length;
+  }
+  stepLight();
+  alarmSeqInterval = setInterval(stepLight, 800);
+  playAlarmSound();
+}
+
+function playAlarmSound(){
+  try {
+    const ctx = new (window.AudioContext || window.webkitAudioContext)();
+    // 3 ascending beeps
+    [[440,0],[554,0.35],[659,0.7],[440,1.2],[554,1.55],[659,1.9]].forEach(([f,t]) => {
+      const osc = ctx.createOscillator();
+      const gain = ctx.createGain();
+      osc.connect(gain); gain.connect(ctx.destination);
+      osc.type = 'sine'; osc.frequency.value = f;
+      gain.gain.setValueAtTime(alertVolume, ctx.currentTime+t);
+      gain.gain.exponentialRampToValueAtTime(0.001, ctx.currentTime+t+0.28);
+      osc.start(ctx.currentTime+t); osc.stop(ctx.currentTime+t+0.3);
+    });
+  } catch(e){}
+}
+
+function dismissAlarm(){
+  document.getElementById('alarmOv').classList.remove('open');
+  if(alarmSeqInterval){ clearInterval(alarmSeqInterval); alarmSeqInterval=null; }
+  ['red','yellow','green'].forEach(col => document.getElementById('tl-'+col).classList.remove('on'));
+}
+
+
+let currentSpType = 'event';
+function selSpType(type){
+  currentSpType=type;
+  ['event','holiday','away-mel','away-ben','away-both'].forEach(t=>{
+    const el=document.getElementById('spt-'+t);
+    if(el)el.classList.toggle('active',t===type);
+  });
+  // Show colour picker only for events
+  const cw=document.getElementById('spColorRow-wrap');
+  if(cw)cw.style.display=(type==='holiday'||type.startsWith('away'))?'none':'';
+  // Show public holidays list for holiday type
+  const hw=document.getElementById('spPublicHolidays-wrap');
+  if(hw)hw.style.display=type==='holiday'?'':'none';
+  if(type==='holiday')buildPublicHolidaysList();
+  // Auto-fill emoji hint
+  const emojiMap={event:'🎉',holiday:'🏖','away-mel':'🌻','away-ben':'🚀','away-both':'🏠'};
+  const placeholders={event:'e.g. Christmas...','holiday':'e.g. Easter Monday','away-mel':'e.g. Dad\'s weekend','away-ben':'e.g. Dad\'s weekend','away-both':'e.g. Dad\'s weekend'};
+  const ti=document.getElementById('spTitle');
+  const ei=document.getElementById('spEmoji');
+  if(ti)ti.placeholder=placeholders[type]||'';
+  if(ei)ei.placeholder=emojiMap[type]||'🎉';
+}
+
+const AU_PUBLIC_HOLIDAYS=[
+  {name:"New Year's Day",emoji:'🎆',month:1,day:1},
+  {name:'Australia Day',emoji:'🦘',month:1,day:26},
+  {name:'Good Friday',emoji:'✝️',month:0,day:0,easter:-2},
+  {name:'Easter Saturday',emoji:'🐣',month:0,day:0,easter:-1},
+  {name:'Easter Sunday',emoji:'🐣',month:0,day:0,easter:0},
+  {name:'Easter Monday',emoji:'🐰',month:0,day:0,easter:1},
+  {name:'Anzac Day',emoji:'🌺',month:4,day:25},
+  {name:"Queen's/King's Birthday",emoji:'👑',month:6,day:0,nthMon:2},
+  {name:'Christmas Day',emoji:'🎄',month:12,day:25},
+  {name:'Boxing Day',emoji:'🎁',month:12,day:26},
+];
+
+function getEasterDate(year){
+  // Anonymous Gregorian algorithm
+  const a=year%19,b=Math.floor(year/100),cc2=year%100;
+  const d=Math.floor(b/4),e=b%4,f=Math.floor((b+8)/25);
+  const g=Math.floor((b-f+1)/3),h=(19*a+b-d-g+15)%30;
+  const i=Math.floor(cc2/4),k=cc2%4,l=(32+2*e+2*i-h-k)%7;
+  const m=Math.floor((a+11*h+22*l)/451);
+  const month=Math.floor((h+l-7*m+114)/31);
+  const day=((h+l-7*m+114)%31)+1;
+  return new Date(year,month-1,day);
+}
+
+function buildPublicHolidaysList(){
+  const cont=document.getElementById('publicHolidaysList');
+  if(!cont)return;
+  const yr=new Date().getFullYear();
+  const easter=getEasterDate(yr);
+  cont.innerHTML='';
+  AU_PUBLIC_HOLIDAYS.forEach(h=>{
+    let d;
+    if(h.easter!==undefined){
+      d=new Date(easter);d.setDate(d.getDate()+h.easter);
+    } else if(h.nthMon){
+      // nth Monday of month
+      d=new Date(yr,h.month-1,1);
+      let count=0;
+      while(count<h.nthMon){if(d.getDay()===1)count++;if(count<h.nthMon)d.setDate(d.getDate()+1);}
+    } else {
+      d=new Date(yr,h.month-1,h.day);
+    }
+    const ds=d.toISOString().split('T')[0];
+    const btn=document.createElement('button');
+    btn.style.cssText='background:rgba(56,182,200,0.12);border:1.5px solid rgba(56,182,200,0.3);border-radius:8px;padding:4px 8px;font-family:"Nunito",sans-serif;font-size:11px;font-weight:800;color:var(--text);cursor:pointer';
+    btn.textContent=h.emoji+' '+h.name;
+    btn.onclick=()=>{
+      document.getElementById('spTitle').value=h.name;
+      document.getElementById('spEmoji').value=h.emoji;
+      document.getElementById('spStart').value=ds;
+      document.getElementById('spEnd').value=ds;
+    };
+    cont.appendChild(btn);
+  });
+}
+
+function isKidAway(kid){
+  const ds=tds();
+  return spEvs.some(s=>{
+    if(ds<s.start||ds>s.end)return false;
+    if(s.type==='away-both')return kid==='mel'||kid==='ben';
+    if(s.type==='away-mel')return kid==='mel';
+    if(s.type==='away-ben')return kid==='ben';
+    return false;
+  });
+}
+function getAwayEvent(kid){
+  const ds=tds();
+  return spEvs.find(s=>{
+    if(ds<s.start||ds>s.end)return false;
+    if(s.type==='away-both')return kid==='mel'||kid==='ben';
+    if(s.type==='away-mel')return kid==='mel';
+    if(s.type==='away-ben')return kid==='ben';
+    return false;
+  });
+}
+// ── PANEL VISIBILITY ──
+const PANEL_DEFS=[
+  {id:'lexie', label:'🌸 Lexie', sub:'Kid card'},
+  {id:'mel',   label:'🌻 Mel',   sub:'Kid card'},
+  {id:'ben',   label:'🚀 Ben',   sub:'Kid card'},
+  {id:'nate',  label:'⚡ Nate',  sub:'Kid card'},
+  {id:'clock', label:'🕐 Clock', sub:'Clock + segment bar'},
+  {id:'today', label:'📅 Today\'s Plan', sub:'Events banner'},
+  {id:'strip', label:'🌈 Strip message', sub:'Rotating family message'},
+];
+function loadPanelVis(){
+  const s=localStorage.getItem('fhq9_pVis');
+  if(s){try{return JSON.parse(s);}catch(e){}}
+  // all visible by default
+  const def={};PANEL_DEFS.forEach(p=>def[p.id]=true);return def;
+}
+function savePanelVis(vis){localStorage.setItem('fhq9_pVis',JSON.stringify(vis));}
+function applyPanelVis(){
+  const vis=loadPanelVis();
+  PANEL_DEFS.forEach(pd=>{
+    const el=document.getElementById('panel-'+pd.id);
+    if(el)el.style.display=vis[pd.id]===false?'none':'';
+  });
+}
+function buildPanelToggleList(){
+  const vis=loadPanelVis();
+  const cont=document.getElementById('panelToggleList');
+  if(!cont)return;
+  cont.innerHTML='';
+  PANEL_DEFS.forEach(pd=>{
+    const row=document.createElement('div');row.className='panel-toggle-row';
+    const checked=vis[pd.id]!==false;
+    row.innerHTML=`<div><div class="panel-toggle-label">${pd.label}</div><div class="panel-toggle-sub">${pd.sub}</div></div>
+    <label class="toggle-switch">
+      <input type="checkbox" ${checked?'checked':''} onchange="togglePanelVis('${pd.id}',this.checked)">
+      <span class="toggle-slider"></span>
+    </label>`;
+    cont.appendChild(row);
+  });
+}
+function togglePanelVis(id,show){
+  const vis=loadPanelVis();
+  vis[id]=show;
+  savePanelVis(vis);
+  applyPanelVis();
+}
+
+document.fonts.ready.then(()=>{
+  // Build grid first, then populate — order matters
+  bT();bPK();
+  initGrid();
+  initCC();
+
+  const si0=gsi(new Date().getHours()*60+new Date().getMinutes());
+  lSI=si0;lHr=new Date().getHours();
+  apTh(SEGS[si0].id);
+  iC(SEGS[si0].id);
+  uCo();rTE();rsb();uDt();rmb();
+  sr(0);startRuleTimer();
+  applyPanelVis();
+  initVolume();
+  initBannerResize();
+
+  drawClock();
+  setInterval(()=>{drawClock();if(pSI>=0)uSPT();},1000);
+  setInterval(uDt,30000);
+  setInterval(checkAlarms,5000);
+
+  if(!spEvs.length){
+    const yr=new Date().getFullYear();
+    spEvs=[
+      {title:'Christmas',emoji:'🎄',start:`${yr}-12-25`,end:`${yr}-12-26`,color:'#ff6b6b',type:'holiday'},
+      {title:'Easter',emoji:'🐣',start:`${yr}-04-18`,end:`${yr}-04-21`,color:'#ffd700',type:'holiday'},
+      {title:'School Holidays',emoji:'🏖',start:`${yr}-07-05`,end:`${yr}-07-20`,color:'#4fc3f7',type:'event'}
+    ];
+    sv();
+  }
+});;
+</script>
+
+
+<!-- READY SIREN POPUP -->
+<div class="siren-ov" id="sirenOv">
+  <div class="siren-popup">
+    <div class="siren-beacon-wrap">
+      <div class="siren-beacon" id="sirenBeacon">
+        <div class="siren-beacon-body">
+          <div class="siren-beacon-dome"></div>
+          <div class="siren-beacon-base"></div>
+        </div>
+        <div class="siren-beam" id="sirenBeam"></div>
+        <div class="siren-beam siren-beam2" id="sirenBeam2"></div>
+      </div>
+    </div>
+    <div class="siren-title">TIME'S UP!</div>
+    <div class="siren-kids" id="sirenKids"></div>
+    <button class="siren-stop-btn" onclick="dismissSiren()">⏹ STOP</button>
+  </div>
+</div>
+
+<!-- ALARM OVERLAY -->
+<div class="alarm-overlay" id="alarmOv">
+  <div class="alarm-popup" id="alarmPopup">
+    <div class="alarm-kids-row" id="alarmKidsRow"></div>
+    <div class="tl-housing">
+      <div class="tl red" id="tl-red"></div>
+      <div class="tl yellow" id="tl-yellow"></div>
+      <div class="tl green" id="tl-green"></div>
+    </div>
+    <div class="alarm-msg-text" id="alarmMsg"></div>
+    <button class="alarm-stop-btn" onclick="dismissAlarm()">⏹ STOP</button>
+  </div>
+</div>
+</body>
+</html>
